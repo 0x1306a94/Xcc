@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f3K-9Q-fle">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Uno-kc-0eP">
+            <objects>
+                <tabBarController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f3K-9Q-fle" customClass="NMTabBarController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Wr-XY-shV" customClass="NMTabBar" customModule="NetEaseMusic" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="HjU-xr-XDI" kind="relationship" relationship="viewControllers" id="l6g-QT-vOt"/>
+                        <segue destination="7zk-Ch-uEU" kind="relationship" relationship="viewControllers" id="oj0-bL-b5g"/>
+                        <segue destination="O7G-FA-h55" kind="relationship" relationship="viewControllers" id="kAX-3I-uoo"/>
+                        <segue destination="qT5-fL-5EN" kind="relationship" relationship="viewControllers" id="4ZX-V8-AkK"/>
+                        <segue destination="Vzn-FI-L5h" kind="relationship" relationship="viewControllers" id="WeS-6K-gyf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ylk-30-8xl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Discover Navigation-->
+        <scene sceneID="HtW-Gc-z66">
+            <objects>
+                <navigationController id="HjU-xr-XDI" userLabel="Discover Navigation" customClass="NMNavigationController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="cm4_btm_icn_discovery" selectedImage="cm4_btm_icn_discovery_prs" id="8ai-qN-hoT"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mej-CC-riH">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qAj-Gg-G2y" kind="relationship" relationship="rootViewController" id="UWO-Zx-P3J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="is4-Qq-ceI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="744"/>
+        </scene>
+        <!--Discover Reference-->
+        <scene sceneID="FSr-55-JP4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NMDiscover" id="qAj-Gg-G2y" userLabel="Discover Reference" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="O9R-gA-Gdy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BA3-6G-AUp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="1160"/>
+        </scene>
+        <!--Video Navigation-->
+        <scene sceneID="4VE-Ew-bKs">
+            <objects>
+                <navigationController id="7zk-Ch-uEU" userLabel="Video Navigation" customClass="NMNavigationController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Video" image="cm4_btm_icn_video" selectedImage="cm4_btm_icn_video_prs" id="cHP-ea-UWJ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="exS-A0-l5V">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="37j-2W-we8" kind="relationship" relationship="rootViewController" id="hoP-mG-4fu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jut-RP-hHQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-610" y="744"/>
+        </scene>
+        <!--Video Reference-->
+        <scene sceneID="tuJ-3G-yai">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NMVideo" id="37j-2W-we8" userLabel="Video Reference" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="aRD-w3-0A0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="041-hN-eff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-610" y="1160"/>
+        </scene>
+        <!--Music Navigation-->
+        <scene sceneID="y2T-cd-Nvz">
+            <objects>
+                <navigationController id="O7G-FA-h55" userLabel="Music Navigation" customClass="NMNavigationController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Music" image="cm4_btm_icn_music" selectedImage="cm4_btm_icn_music_prs" id="PNe-hk-anF"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uQr-0k-coq">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="d6k-RE-pwA" kind="relationship" relationship="rootViewController" id="2kb-a9-hZE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qlJ-t6-Ud0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="744"/>
+        </scene>
+        <!--Music Reference-->
+        <scene sceneID="f6j-hn-4ps">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NMMusic" id="d6k-RE-pwA" userLabel="Music Reference" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kyC-W4-UBU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91H-cC-Zwu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="1160"/>
+        </scene>
+        <!--Moments Navigation-->
+        <scene sceneID="zdX-PA-vVg">
+            <objects>
+                <navigationController id="qT5-fL-5EN" userLabel="Moments Navigation" customClass="NMNavigationController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Friends" image="cm4_btm_icn_friend" selectedImage="cm4_btm_icn_friend_prs" id="UL1-83-6hI"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TYM-St-CUM">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rxw-Lj-8ks" kind="relationship" relationship="rootViewController" id="gpb-e9-8Yd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yli-0Y-dEh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="744"/>
+        </scene>
+        <!--Moments Reference-->
+        <scene sceneID="4SV-jl-33u">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NMMoments" id="rxw-Lj-8ks" userLabel="Moments Reference" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xTb-ME-Yun"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYi-4L-jSE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="1160"/>
+        </scene>
+        <!--User Navigation-->
+        <scene sceneID="pLH-Kn-g7v">
+            <objects>
+                <navigationController id="Vzn-FI-L5h" userLabel="User Navigation" customClass="NMNavigationController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="User" image="cm4_btm_icn_account" selectedImage="cm4_btm_icn_account_prs" id="Zhr-LV-yp4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Trp-mi-IwK">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rMX-pb-qHZ" kind="relationship" relationship="rootViewController" id="dCN-Ka-tNL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7I-fl-AYf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220" y="744"/>
+        </scene>
+        <!--User Reference-->
+        <scene sceneID="MLT-Dx-dEX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NMUser" id="rMX-pb-qHZ" userLabel="User Reference" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yYK-J2-obd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HWb-i6-HcX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220" y="1160"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cm4_btm_icn_account" width="26" height="26"/>
+        <image name="cm4_btm_icn_account_prs" width="26" height="26"/>
+        <image name="cm4_btm_icn_discovery" width="26" height="26"/>
+        <image name="cm4_btm_icn_discovery_prs" width="26" height="26"/>
+        <image name="cm4_btm_icn_friend" width="26" height="26"/>
+        <image name="cm4_btm_icn_friend_prs" width="26" height="26"/>
+        <image name="cm4_btm_icn_music" width="26" height="26"/>
+        <image name="cm4_btm_icn_music_prs" width="26" height="26"/>
+        <image name="cm4_btm_icn_video" width="26" height="26"/>
+        <image name="cm4_btm_icn_video_prs" width="26" height="26"/>
+    </resources>
+</document>

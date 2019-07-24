@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NMUserHomePlaylistHeaderView" customModule="NetEaseMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svr-tj-UIp" userLabel="Background View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="systemRedColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTX-z8-Bzr" userLabel="Content View">
+                    <rect key="frame" x="0.0" y="7" width="375" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzL-nG-jbN">
+                            <rect key="frame" x="16" y="0.0" width="74" height="30"/>
+                            <attributedString key="attributedText">
+                                <fragment content="音乐专栏">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" metaFont="menu" size="14"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="(3)">
+                                    <attributes>
+                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" metaFont="cellTitle"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="共被评论11.9万次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVU-fe-mhf">
+                            <rect key="frame" x="248.66666666666666" y="0.0" width="110.33333333333334" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="systemTealColor"/>
+                    <constraints>
+                        <constraint firstItem="NzL-nG-jbN" firstAttribute="leading" secondItem="ZTX-z8-Bzr" secondAttribute="leading" constant="16" id="809-se-0wn"/>
+                        <constraint firstItem="EVU-fe-mhf" firstAttribute="top" secondItem="ZTX-z8-Bzr" secondAttribute="top" id="961-O0-VFv"/>
+                        <constraint firstAttribute="trailing" secondItem="EVU-fe-mhf" secondAttribute="trailing" constant="16" id="Fz0-9G-0Hf"/>
+                        <constraint firstAttribute="height" constant="30" id="OdW-15-fl5"/>
+                        <constraint firstItem="NzL-nG-jbN" firstAttribute="top" secondItem="ZTX-z8-Bzr" secondAttribute="top" id="Tav-sV-tbF"/>
+                        <constraint firstAttribute="bottom" secondItem="NzL-nG-jbN" secondAttribute="bottom" id="Zv2-Yh-vlY"/>
+                        <constraint firstAttribute="bottom" secondItem="EVU-fe-mhf" secondAttribute="bottom" id="o6Q-mo-zsQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ZTX-z8-Bzr" secondAttribute="bottom" priority="999" id="EBm-uB-fIx"/>
+                <constraint firstItem="svr-tj-UIp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="G6i-wP-uJJ"/>
+                <constraint firstItem="svr-tj-UIp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vbd-cr-sQt"/>
+                <constraint firstAttribute="trailing" secondItem="svr-tj-UIp" secondAttribute="trailing" id="Wzx-qz-eRP"/>
+                <constraint firstItem="ZTX-z8-Bzr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="YeK-Ch-xhO"/>
+                <constraint firstAttribute="trailing" secondItem="ZTX-z8-Bzr" secondAttribute="trailing" id="szQ-IY-PFh"/>
+                <constraint firstItem="ZTX-z8-Bzr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uxk-6X-GCJ"/>
+                <constraint firstItem="svr-tj-UIp" firstAttribute="bottom" secondItem="ZTX-z8-Bzr" secondAttribute="bottom" id="yBC-wo-Sfa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="detailTextLabel" destination="EVU-fe-mhf" id="ijA-vD-Ze2"/>
+                <outlet property="textLabel" destination="NzL-nG-jbN" id="AuY-OV-VR3"/>
+                <outlet property="topLayoutConstraint" destination="EBm-uB-fIx" id="0lp-Vs-juX"/>
+            </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="136.33004926108376"/>
+        </view>
+    </objects>
+</document>

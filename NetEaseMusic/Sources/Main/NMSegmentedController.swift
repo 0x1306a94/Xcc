@@ -1,5 +1,5 @@
 //
-//  NMSegmentedViewController.swift
+//  NMSegmentedController.swift
 //  NetEaseMusic
 //
 //  Created by SAGESSE on 2019/6/11.
@@ -9,8 +9,8 @@
 import UIKit
 
 
-@objc
-open class NMSegmentedViewController: UIViewController, XCPageable, XCParallaxable, XCPagingViewDelegate, XCParallaxingViewDelegate {
+@IBDesignable
+open class NMSegmentedController: UIViewController, XCPageable, XCParallaxable, XCPagingViewDelegate, XCParallaxingViewDelegate {
 
     
     /// Configure the header view, which will be displays below the status bar / navigation bar.
@@ -469,8 +469,8 @@ open class NMSegmentedViewController: UIViewController, XCPageable, XCParallaxab
     fileprivate var sharedMaskImage: UIImage? {
 
         // With the radius cache.
-        if NMSegmentedViewController.sharedMaskImage?.0 == cachedRadius {
-            return NMSegmentedViewController.sharedMaskImage?.1
+        if NMSegmentedController.sharedMaskImage?.0 == cachedRadius {
+            return NMSegmentedController.sharedMaskImage?.1
         }
 
         let bounds = CGRect(x: 0, y: 0, width: cachedRadius * 4, height: cachedRadius * 4)
@@ -483,7 +483,7 @@ open class NMSegmentedViewController: UIViewController, XCPageable, XCParallaxab
         // Get the drawed image & clean context.
         let image = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: .init(top: cachedRadius, left: cachedRadius, bottom: cachedRadius, right: cachedRadius))
         UIGraphicsEndImageContext()
-        NMSegmentedViewController.sharedMaskImage = (cachedRadius, image)
+        NMSegmentedController.sharedMaskImage = (cachedRadius, image)
         return image
 
     }
@@ -497,7 +497,7 @@ open class NMEmabbedViewControllerSegue: UIStoryboardSegue {
 
     open override func perform() {
         // Add view controller to the source view controller.
-        (source as? NMSegmentedViewController).map {
+        (source as? NMSegmentedController).map {
             $0.cachedViewControllers.append(destination)
         }
     }

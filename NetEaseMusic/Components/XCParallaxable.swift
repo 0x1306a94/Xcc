@@ -450,12 +450,7 @@ open class XCParallaxingView: UIView {
         // Calculate content offset from the context.
         let extra = scrollView.extra
         let offset = rebase(scrollView.contentOffset, from: scrollView)
-        
-        // Ignore when offset not any change.
         let dy = offset.y - extra.contentOffset.y
-        guard dy != 0 else {
-            return
-        }
         
         // Limit the minimum content offset when offset in the middle.
         var y = pinnedContentOffset.y + dy
@@ -463,6 +458,11 @@ open class XCParallaxingView: UIView {
             y = max(y, 0)
         }
         
+        // Ignore when offset not any change.
+        guard dy != 0 || y != cachedContentOffsetWithRaw.y else {
+            return
+        }
+
         // Start linkage all emabed scrollViews.
         activingView = scrollView
 
@@ -525,7 +525,6 @@ open class XCParallaxingView: UIView {
                 clamping(nil)
 
             default:
-                logger.debug?.write("???", scrollView.panGestureRecognizer.velocity(in: nil), offset, cachedContentSize)
                 break
             }
             

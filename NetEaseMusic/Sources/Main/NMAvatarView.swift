@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @IBDesignable
 open class NMAvatarView: UIControl {
 
@@ -15,18 +16,20 @@ open class NMAvatarView: UIControl {
         super.init(frame: frame)
         self.setup()
     }
-
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setup()
     }
 
-    @IBInspectable var head: UIImage? {
+    @IBInspectable
+    open var avatar: UIImage? {
         set { return contentView.image = newValue }
         get { return contentView.image }
     }
 
-    @IBInspectable var badge: UIImage? {
+    @IBInspectable
+    open var badge: UIImage? {
         willSet {
             // The badge iamge is displaying?
             badgeView.image = newValue
@@ -40,18 +43,19 @@ open class NMAvatarView: UIControl {
                 return
             }
 
-            // Reset position & add subview.
-            var nframe = badgeView.bounds
-            nframe.origin.x = bounds.width - nframe.width - 3
-            nframe.origin.y = bounds.height - nframe.height
-            badgeView.frame = nframe
+            // Add subview.
             insertSubview(badgeView, aboveSubview: stackView)
         }
     }
+    
+    
+    @IBInspectable
+    open var padding: UIEdgeInsets = .zero
+
 
     open override var isHighlighted: Bool {
         willSet {
-            guard newValue else {
+            guard newValue && isTouchInside else {
                 foregroundView.backgroundColor = nil
                 return
             }
@@ -61,30 +65,35 @@ open class NMAvatarView: UIControl {
 
     open override func layoutSubviews() {
         super.layoutSubviews()
+        
+        stackView.frame = bounds.inset(by: padding)
         stackView.layer.cornerRadius = stackView.frame.width / 2
+        
+        badgeView.frame.origin = .init(x: stackView.frame.maxX - badgeView.frame.width + 5,
+                                       y: stackView.frame.maxY - badgeView.frame.height)
     }
 
     @inline(__always) fileprivate func setup() {
-
+ 
         stackView.frame = bounds
         stackView.backgroundColor = .white
-        stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         stackView.isUserInteractionEnabled = false
+        
         stackView.layer.masksToBounds = true
         stackView.layer.shouldRasterize = true
         stackView.layer.rasterizationScale = UIScreen.main.scale
+        
         stackView.addSubview(contentView)
         stackView.addSubview(foregroundView)
 
         contentView.frame = stackView.bounds
-        contentView.autoresizingMask = stackView.autoresizingMask
+        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         foregroundView.frame = stackView.bounds
-        foregroundView.autoresizingMask = stackView.autoresizingMask
+        foregroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        badgeView.bounds = .init(x: 0, y: 0, width: 21, height: 21)
+        badgeView.bounds = .init(x: 0, y: 0, width: 16, height: 16)
         badgeView.contentMode = .scaleAspectFill
-        badgeView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
 
         addSubview(stackView)
     }

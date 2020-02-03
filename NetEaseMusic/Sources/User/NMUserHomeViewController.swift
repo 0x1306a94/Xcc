@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class NMUserHomeViewController: NMSegmentedViewController {
+class NMUserHomeViewController: NMSegmentedController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

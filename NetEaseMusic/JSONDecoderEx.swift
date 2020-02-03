@@ -7,6 +7,7 @@
 //
 import Foundation
 
+
 /// If a type conform the JSONDecoderExpressibleByNilLiteral protocol, it should automatically create default for value not found.
 public protocol JSONDecoderExExpressibleByNilLiteral {
     init()
@@ -1315,7 +1316,7 @@ private struct _JSONUnkeyedDecodingContainer: UnkeyedDecodingContainer {
     ///   is null, or of there are no more values to decode.
     mutating func decode<T: Decodable>(_ type: T.Type) throws -> T {
 
-        // Date and data cannot be processed.
+        // Date and data can't be processed.
         if type is Date.Type || type is Data.Type {
             return try container.decode(type)
         }
@@ -1675,7 +1676,6 @@ private struct _JSONDecoderOptioins {
 
     /// Gets number from container.
     func number<T: Decodable>(in container: SingleValueDecodingContainer, to type: T.Type) throws -> T {
-
         do {
 
             return try container.decode(type)
@@ -1711,27 +1711,22 @@ private struct _JSONDecoderOptioins {
 
     /// Force prase to be a string type.
     func string(in container: SingleValueDecodingContainer) throws -> String {
-
         // Try convert to a boolean value.
         if let value = try? container.decode(Bool.self).description {
             return value
         }
-
         // Try convert to a 64bit unsigned int value.
         if let value = try? container.decode(UInt64.self).description {
             return value
         }
-
         // Try convert to a 64bit signed int value.
         if let value = try? container.decode(Int64.self).description {
             return value
         }
-
         // Try convert to a 64bit signed double value.
         if let value = try? container.decode(Double.self).description {
             return value
         }
-
         // It can only be a string, if it fails to throw an execption.
         return try container.decode(String.self)
     }

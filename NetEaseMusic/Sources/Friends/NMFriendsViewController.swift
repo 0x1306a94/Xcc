@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NMFriendsViewController: NMSegmentedViewController {
+class NMFriendsViewController: NMSegmentedController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

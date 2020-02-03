@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AsyncDisplayKit
 
 //
 //
@@ -33,19 +34,26 @@ import UIKit
 //}
 
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // Disable Async display kit all logs.
+        ASDisableLogging()
 
         #if DEBUG
         NMLaunchViewController.show(2)
         #endif
         
-        
+        //#if DEBUG
+        //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+        //    UIApplication.shared.keyWindow?.showsFPS = true
+        //}
+        //#endif
+
         // Override point for customization after application launch.
         return true
     }

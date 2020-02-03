@@ -16,4 +16,10 @@ framework module AsyncDisplayKit {
     export *
   }
   
+  explicit module PINRemoteImage {
+    header "PINCache.h"
+	header "PINOperation.h"
+    header "PINRemoteImage.h"
+    export *
+  }
 }

@@ -10,57 +10,26 @@ import UIKit
 import AsyncDisplayKit
 
 
-//class NMCache {
-//
-//    static let shared = NMCache()
-//
-//
-//    func image(for key: String, remaking: @autoclosure (() -> UIImage?)) -> UIImage? {
-//        return remaking()
-//    }
-//
-//}
-//
-//extension UIImage {
-//
-//}
-
-//class NMImage {
-    
-//    let layer = CAGradientLayer()
-//    layer.locations = [0, 1]
-//    layer.startPoint = .init(x: 0.5, y: 0.0)
-//    layer.endPoint = .init(x: 0.5, y: 1.0)
-//    layer.colors = [
-//        UIColor(white: 0, alpha: 0.0).cgColor,
-//        UIColor(white: 0, alpha: 0.5).cgColor
-//    ]
-//    return layer
-
-//}
-
-
-
-
-
-
-
-
-let timage1: UIImage? = nil// #imageLiteral(resourceName: "ap2")
-let timage2: UIImage? = nil// #imageLiteral(resourceName: "txs")
-let timage3: UIImage? = nil// #imageLiteral(resourceName: "user_head")
-let timage4: UIImage? = nil// #imageLiteral(resourceName: "cm2_icn_user_v")
+let timage1: UIImage? = #imageLiteral(resourceName: "ap2")
+let timage2: UIImage? = #imageLiteral(resourceName: "txs")
+let timage3: UIImage? = #imageLiteral(resourceName: "user_head")
+let timage4: UIImage? = #imageLiteral(resourceName: "cm2_icn_user_v")
 
 func nmstr(_ str: String, _ font: CGFloat, _ color: UIColor, spacing: CGFloat = 0) -> NSMutableAttributedString {
     
-    let style = NSMutableParagraphStyle()
-    style.lineSpacing = spacing
+    // NSFont = "<UICTFont: 0x1268be0a0> font-family: \"Helvetica\"; font-weight: normal; font-style: normal; font-size: 16.00pt";
+   // UIFont(name: "Helvetica", size: font) ??
     
-    let attributes: [NSAttributedString.Key: Any] = [
+    var attributes: [NSAttributedString.Key: Any] = [
         .font: UIFont.systemFont(ofSize: font),
         .foregroundColor: color,
-        .paragraphStyle: style
     ]
+    
+    if spacing > 0 {
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = spacing
+        attributes[.paragraphStyle] = style
+    }
     
 //    if #available(iOS 13.0, *) {
 //        attributes[.foregroundColor] = UIColor {
@@ -259,6 +228,33 @@ extension NMEventNode.Display {
     /// The text node for event.
     class Text: ASDisplayNode, ASTextNodeDelegate, NMEventNodeDisplayable {
         
+        /// The text attachment for text node.
+        class Attachment: NSTextAttachment {
+            
+            /// A async display node for attachment.
+            var display: ASNetworkImageNode = .init()
+
+            /// A remote image url.
+            convenience init(_ url: URL) {
+                self.init()
+                self.display.isHidden = true
+                self.display.setURL(url, resetToDefault: false)
+            }
+            
+            /// When the current attachment is displayed, will requeste a image.
+            override func image(forBounds imageBounds: CGRect, textContainer: NSTextContainer?, characterIndex charIndex: Int) -> UIImage? {
+                
+                display.isHidden = false
+                
+                display.style.layoutPosition = .init(x: imageBounds.minX, y: imageBounds.minY - imageBounds.height)
+                display.style.preferredSize = imageBounds.size
+                
+                display.supernode?.setNeedsLayout()
+                
+                return nil
+            }
+        }
+        
         /// The real text value.
         let value: ASTextNode = .init()
         
@@ -266,62 +262,109 @@ extension NMEventNode.Display {
         required init(_ entity: NMEvent.Text, for event: NMEvent) {
             super.init()
             
-            self.value.delegate = self
-            self.value.linkAttributeNames = [Text.tap.rawValue]
-            self.value.isUserInteractionEnabled = true
-            
-            self.value.attributedText = nmstr(entity.value, entity.size, UIColor.black, spacing: 8).then { str in
-                var offset = 0
-                // Use detector to examine the entire string.
-                Text.detector?.enumerateMatches(in: str.string, range: NSMakeRange(0, str.length)) { result, _, _ in
-                    // Match successful, check the match result。
-                    guard var range = result?.range, range.location != NSNotFound else {
-                        return
-                    }
-                    
-                    // Calibration the matches range.
-                    range.location += offset
-                    let contents = str.mutableString.substring(with: range)
-                    
-                    // If the contents is a link needs to replace the specific content.
-                    switch contents.first {
-                    case "[": // This is a emoticon.
-                        // Make a new emotion text.
-                        let newValue = "🥰" as NSString
-                        str.replaceCharacters(in: range, with: newValue as String)
-                        offset -= range.length - newValue.length
-                        range = NSMakeRange(range.location, newValue.length)
-                        return
+            var offset = 0
+            var attachments = [Attachment]()
 
-                    case "@": // This is a at.
-                        break
-                        
-                    case "#": // This is a topic.
-                        break
+            self.addSubnode(self.value) {
+                
+                $0.isUserInteractionEnabled = true
+                $0.delegate = self
+                $0.linkAttributeNames = [Text.tap.rawValue]
+                $0.attributedText = NSMutableAttributedString(string: entity.value).then { str in
 
-                    default: // This is a normal url.
-                        // Make a new link text.
-                        let newValue = NSMutableAttributedString(string: "网页连接").then {
-                            $0.insert(.init(attachment: NSTextAttachment2.link), at: 0)
-                            $0.addAttribute(.font, value: UIFont.systemFont(ofSize: entity.size), range: NSMakeRange(0, $0.length))
+                    let color = UIColor.black
+                    let font = UIFont(name: "Helvetica", size: entity.size) ?? UIFont.systemFont(ofSize: entity.size)
+                    let style = NSMutableParagraphStyle()
+                    
+                    style.lineSpacing = 8
+                    
+                    // Configure the text attributes.
+                    str.addAttributes([.font: font, .foregroundColor: color, .paragraphStyle: style], range: NSMakeRange(0, str.length))
+                    
+                    // Use detector to examine the entire string.
+                    Text.detector?.enumerateMatches(in: str.string, range: NSMakeRange(0, str.length)) { result, _, _ in
+                        // Match successful, check the match result。
+                        guard var range = result?.range, range.location != NSNotFound else {
+                            return
                         }
-                        str.replaceCharacters(in: range, with: newValue)
-                        offset -= range.length - newValue.length
-                        range = NSMakeRange(range.location, newValue.length)
+                        
+                        // Calibration the matches range.
+                        range.location += offset
+                        let contents = str.mutableString.substring(with: range)
+                        
+                        // If the contents is a link needs to replace the specific content.
+                        switch contents.first {
+                        case "[" where contents.count > 2: // This is a emoticon.
+                            // Make a new emotion text.
+                            let emoji = String(contents[contents.index(after: contents.startIndex) ..< contents.index(before: contents.endIndex)])
+                            
+                            // This is a named emoji?
+                            if let newValue = NMEmojiCoder.shared.emoji(for: emoji) as NSString? {
+                                str.replaceCharacters(in: range, with: newValue as String)
+                                offset -= range.length - newValue.length
+                                range = NSMakeRange(range.location, newValue.length)
+                                return
+                            }
+                            
+                            // This is a custom emotion(sync display)
+                            if let newValue = NMEmojiCoder.shared.image(for: emoji) {
+                                let attachment = NSTextAttachment()
+                                attachment.image = newValue
+                                attachment.bounds = .init(x: 0, y: font.descender, width: newValue.size.width, height: newValue.size.height)
+                                str.replaceCharacters(in: range, with: NSAttributedString(attachment: attachment))
+                                offset -= range.length - 1
+                                range = NSMakeRange(range.location, 1)
+                                return
+                            }
+                            
+                            // This is a custom emotion(async display)
+                            if let newValue = NMEmojiCoder.shared.url(for: emoji) {
+                                let attachment = Attachment(newValue)
+                                attachment.bounds = .init(x: 0, y: font.descender, width: 22, height: 22)
+                                str.replaceCharacters(in: range, with: NSAttributedString(attachment: attachment))
+                                offset -= range.length - 1
+                                range = NSMakeRange(range.location, 1)
+                                attachments.append(attachment)
+                                return
+                            }
+                            
+                            // This is a unknow emoji, ignore.
+                            return
+                            
+                        case "@": // This is a at.
+                            break
+                            
+                        case "#": // This is a topic.
+                            break
+                            
+                        default: // This is a normal url.
+                            // Make a new link text.
+                            let newValue = NSMutableAttributedString(string: "网页连接").then {
+                                $0.insert(.init(attachment: NSTextAttachment2.link), at: 0)
+                                $0.addAttribute(.font, value: font, range: NSMakeRange(0, $0.length))
+                            }
+                            str.replaceCharacters(in: range, with: newValue)
+                            offset -= range.length - newValue.length
+                            range = NSMakeRange(range.location, newValue.length)
+                        }
+                        
+                        // Update the highlighted attributes.
+                        str.addAttribute(Text.tap, value: contents, range: range)
+                        str.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.3123042285, green: 0.4909963608, blue: 0.6867333055, alpha: 1), range: range)
                     }
-                    
-                    // Update the highlighted attributes.
-                    str.addAttribute(Text.tap, value: contents, range: range)
-                    str.addAttribute(.foregroundColor, value: #colorLiteral(red: 0.3123042285, green: 0.4909963608, blue: 0.6867333055, alpha: 1), range: range)
                 }
             }
             
-            self.addSubnode(self.value)
+            // Add all attachments that show node to the current node.
+            attachments.forEach {
+                self.addSubnode($0.display)
+            }
         }
         
         /// Setup layout for all subnodes.
         override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-            return value.insets(bottom: 4)
+            return ASOverlayLayoutSpec(child: value.insets(bottom: 4),
+                                       overlay: ASAbsoluteLayoutSpec(children: .init(subnodes?.suffix(from: 1) ?? [])))
         }
 
         /// Enable highlighting now that self.layer has loaded.

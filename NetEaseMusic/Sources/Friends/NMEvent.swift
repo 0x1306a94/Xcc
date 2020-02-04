@@ -67,7 +67,7 @@ class NMEvent {
         self.date = "1月12日"
             
         self.tiles = [
-            NMEvent.Text(value: "恭喜@淘走的洋 @宇宙的尽头是餐厅 @Erwinnnnn @光阴姑娘 @Kelly狮子合唱团 @Ulna-SJJ @有星的空 @多肉植物ayi 获得门票1张；本次活动为现场取票，请在1月15日15：00前将您的姓名+手机号（作为取票凭证）私信给本喵，逾期不候噢~\n[多多大笑][多多瞌睡][多多笑哭][多多可怜][亲亲][撇嘴][怒]", size: 16),
+            NMEvent.Text(value: "🎇🌇🛤🎈🎈🎈🍎🐼🥰[惊恐][呆][小鸡]\n恭喜@淘走的洋 @宇宙的尽头是餐厅 @Erwinnnnn @光阴姑娘 @Kelly狮子合唱团 @Ulna-SJJ @有星的空 @多肉植物ayi 获得门票1张；本次活动为现场取票，请在1月15日15：00前将您的姓名+手机号（作为取票凭证）私信给本喵，逾期不候噢~\n[多多大笑][多多瞌睡][多多笑哭][多多可怜][亲亲][撇嘴][怒][憨笑]", size: 16),
             NMEvent.Image(items: (0 ..< (id % 10)).map { _ in
                 return NMEvent.Image.Item(url: nil, size: .init(width: 787, height: 787))
             }),

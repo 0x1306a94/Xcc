@@ -31,6 +31,7 @@
 		0C3C11DF22BA1DA000F4E310 /* JSONDecoderEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C11DE22BA1DA000F4E310 /* JSONDecoderEx.swift */; };
 		0C41048122EEA840008A016C /* NMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C41048022EEA840008A016C /* NMLabel.swift */; };
 		0C499FB023E56647009762E8 /* NSTextAttachment2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C499FAF23E56647009762E8 /* NSTextAttachment2.swift */; };
+		0C499FB223E85DD1009762E8 /* NMEmojiCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C499FB123E85DD1009762E8 /* NMEmojiCoder.swift */; };
 		0C4AE16922E5983E00856489 /* NMUserHomePlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AE16722E5983E00856489 /* NMUserHomePlaylistCell.swift */; };
 		0C4AE16A22E5983E00856489 /* NMUserHomePlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4AE16822E5983E00856489 /* NMUserHomePlaylistCell.xib */; };
 		0C4AE16D22E59E2000856489 /* NMUserHomePlaylistHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4AE16B22E5984900856489 /* NMUserHomePlaylistHeaderView.xib */; };
@@ -108,6 +109,7 @@
 		0C3C11DE22BA1DA000F4E310 /* JSONDecoderEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderEx.swift; sourceTree = "<group>"; };
 		0C41048022EEA840008A016C /* NMLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMLabel.swift; sourceTree = "<group>"; };
 		0C499FAF23E56647009762E8 /* NSTextAttachment2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextAttachment2.swift; sourceTree = "<group>"; };
+		0C499FB123E85DD1009762E8 /* NMEmojiCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMEmojiCoder.swift; sourceTree = "<group>"; };
 		0C4AE16722E5983E00856489 /* NMUserHomePlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMUserHomePlaylistCell.swift; sourceTree = "<group>"; };
 		0C4AE16822E5983E00856489 /* NMUserHomePlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NMUserHomePlaylistCell.xib; sourceTree = "<group>"; };
 		0C4AE16B22E5984900856489 /* NMUserHomePlaylistHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NMUserHomePlaylistHeaderView.xib; sourceTree = "<group>"; };
@@ -123,7 +125,7 @@
 		0C737CAA23D0459600EFC696 /* Debugger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
 		0C73873123D2075D00EFC696 /* AsyncDisplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AsyncDisplayKit.framework; path = NetEaseMusic/Frameworks/AsyncDisplayKit.framework; sourceTree = "<group>"; };
 		0C77552523CC003C00D4BE50 /* NMEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMEvent.swift; sourceTree = "<group>"; };
-		0C77552723CC004500D4BE50 /* NMEventNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMEventNode.swift; sourceTree = "<group>"; };
+		0C77552723CC004500D4BE50 /* NMEventNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMEventNode.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		0C77552923CC005300D4BE50 /* NMUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMUser.swift; sourceTree = "<group>"; };
 		0C77552B23CC017000D4BE50 /* NMEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMEventController.swift; sourceTree = "<group>"; };
 		0C85FCDA22DF1E0500923518 /* NMAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMAvatarView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				0C1112522187099F001539E8 /* NMSegmentedController.swift */,
 				0C41048022EEA840008A016C /* NMLabel.swift */,
 				0C33A0BC2387C25300150A87 /* NMNetworking.swift */,
+				0C499FB123E85DD1009762E8 /* NMEmojiCoder.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				0CEF1492218AB77500361C69 /* NMDiscoverRecommendViewController.swift in Sources */,
 				0C0E9663230143C50038D814 /* UILabel+Helper.swift in Sources */,
 				0C7E9CF922DD9C4A007710DE /* NMBlurView.swift in Sources */,
+				0C499FB223E85DD1009762E8 /* NMEmojiCoder.swift in Sources */,
 				0C499FB023E56647009762E8 /* NSTextAttachment2.swift in Sources */,
 				0C6C00642147513F0001B742 /* XCParallaxable.swift in Sources */,
 				0CC6A5BC22E33F1A009BFEAA /* NMBadgeView.swift in Sources */,

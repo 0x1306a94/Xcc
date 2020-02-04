@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CommonCrypto
 
 class NMEmojiCoder {
     
@@ -25,9 +26,20 @@ class NMEmojiCoder {
         return nil
     }
     
+    // formatImageUrl: => [self formatImageUrl:arg1 extension:@"jpg"]
+    // formatImageUrl:extension:
+    // dynamicPicHost +  [[Md5 encode_withkey:arg] lowercaseString]
+    // %@/%@/%@.%@
+    
     func url(for custom: String) -> URL? {
-        return c2i[custom].flatMap { _ in
-            return URL(string: "https://raw.githubusercontent.com/qq2225936589/ImageDemos/master/demo01.webp")
+        return c2i[custom].flatMap {
+            return URL(string: "https://p2.music.126.net/\(nm_md5_encode($0) ?? "")/\($0).jpg")
+            
+//                        return URL(string: "https://p2.music.126.net/V4m7SdpzgrPfjJWaTu3xSQ==/109951163626285326.jpg")
+
+//
+//            http://p1.music.126.net/WfFex7GPSUiuIKE8anlcbA==/109951163626285332.jpg
+
         }
     }
     
@@ -73,4 +85,30 @@ class NMEmojiCoder {
     private var n2e: [String: String]
     
     private var c2i: [String: String]
+}
+
+
+func nm_md5_encode(_ key: String) -> String? {
+    // Generating bytes data.
+    var result = key.data(using: .utf8)
+    var security = "3go8&$8*3*3h0k(2)2".data(using: .utf8)
+
+    // Encryption bytes data.
+    return result?.withUnsafeMutableBytes { lhs in
+        // Perform simpleKeyXOR:withBytes:len:
+        security?.withUnsafeMutableBytes { rhs in
+            lhs.enumerated().forEach {
+                lhs[$0] = $1 ^ rhs.load(fromByteOffset: $0 % rhs.count, as: UInt8.self)
+            }
+        }
+        // Perform MD5 signature.
+        let buffer =  UnsafeMutablePointer<UInt8>.allocate(capacity: .init(CC_MD5_DIGEST_LENGTH))
+        CC_MD5(lhs.baseAddress, .init(lhs.count), buffer)
+        
+        // Perform Base64 encryption and formatting result.
+        var str = Data(bytes: buffer, count: .init(CC_MD5_DIGEST_LENGTH)).base64EncodedString()
+        str = str.replacingOccurrences(of: "/", with: "_")
+        str = str.replacingOccurrences(of: "+", with: "-")
+        return str
+    }
 }

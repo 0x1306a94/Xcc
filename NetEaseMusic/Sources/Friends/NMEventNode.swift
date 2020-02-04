@@ -115,8 +115,6 @@ extension NMEventNode {
                 $0.style.preferredSize = .init(width: 58, height: 58)
             }
             
-
-            
             self.addSubnode(self.title) {
                 $0.style.flexShrink = 0
                 $0.truncationMode = .byTruncatingTail
@@ -231,26 +229,33 @@ extension NMEventNode.Display {
         /// The text attachment for text node.
         class Attachment: NSTextAttachment {
             
+            /// Current displayed image url.
+            var url: URL?
+            
             /// A async display node for attachment.
             var display: ASNetworkImageNode = .init()
 
             /// A remote image url.
             convenience init(_ url: URL) {
                 self.init()
+                self.url = url
                 self.display.isHidden = true
-                self.display.setURL(url, resetToDefault: false)
+                self.display.contentMode = .scaleAspectFill
+                self.display.style.preferredSize = .init(width: 38, height: 38)
             }
             
             /// When the current attachment is displayed, will requeste a image.
             override func image(forBounds imageBounds: CGRect, textContainer: NSTextContainer?, characterIndex charIndex: Int) -> UIImage? {
                 
                 display.isHidden = false
-                
+                display.setURL(url, resetToDefault: false)
+
                 display.style.layoutPosition = .init(x: imageBounds.minX, y: imageBounds.minY - imageBounds.height)
                 display.style.preferredSize = imageBounds.size
                 
                 display.supernode?.setNeedsLayout()
-                
+                display.supernode?.setNeedsDisplay()
+
                 return nil
             }
         }

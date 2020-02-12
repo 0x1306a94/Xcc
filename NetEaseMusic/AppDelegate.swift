@@ -32,6 +32,26 @@ import AsyncDisplayKit
 //
 //    } as @convention(block) (UIView, CGRect) -> () ))
 //}
+//    class Tracker {
+//
+//        func add(_ offset: CGFloat, timestamp: TimeInterval = CACurrentMediaTime()) {
+//
+//            let distance = offset - self.offset
+//            let elapsed = timestamp - self.timestamp
+//
+//            self.offset = offset
+//            self.timestamp = timestamp
+//
+//            self.elapsed = elapsed
+//            self.velocity = (elapsed != 0 ? distance / CGFloat(elapsed) : 0)
+//        }
+//
+//        private var offset: CGFloat = 0
+//        private var timestamp: TimeInterval = 0
+//
+//        private var elapsed: TimeInterval = 0
+//        private var velocity: CGFloat = 0
+//    }
 
 
 @UIApplicationMain

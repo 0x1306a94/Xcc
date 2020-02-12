@@ -69,19 +69,19 @@ class NMEvent {
         self.tiles = [
             NMEvent.Text(value: "🎇🌇🛤🎈🎈🎈🍎🐼🥰[惊恐][呆][小鸡]\n恭喜@淘走的洋 @宇宙的尽头是餐厅 @Erwinnnnn @光阴姑娘 @Kelly狮子合唱团 @Ulna-SJJ @有星的空 @多肉植物ayi 获得门票1张；本次活动为现场取票，请在1月15日15：00前将您的姓名+手机号（作为取票凭证）私信给本喵，逾期不候噢~\n[多多大笑][多多瞌睡][多多笑哭][多多可怜][亲亲][撇嘴][怒][憨笑]", size: 16),
             NMEvent.Image(items: (0 ..< (id % 10)).map { _ in
-                return NMEvent.Image.Item(url: nil, size: .init(width: 787, height: 787))
+                return NMEvent.Image.Item(url: URL(string: "https://p1.music.126.net/EGaVmcNb9LxCFhGA8ufkcA==/109951164600148147.jpg"), size: .init(width: 787, height: 787))
             }),
             NMEvent.Video(),
-            NMEvent.Music.playlist("村上春树：与小泽征尔共度的午后音乐时光", subtitle: "by 云音乐古典之声", cover: URL(string: "http://p2.music.126.net/ys9AuM50On9-cb1TRvTZuA==/109951164614286837.jpg")),
+            NMEvent.Music.playlist("村上春树：与小泽征尔共度的午后音乐时光", subtitle: "by 云音乐古典之声", cover: URL(string: "https://p2.music.126.net/ys9AuM50On9-cb1TRvTZuA==/109951164614286837.jpg")),
             NMEvent.Referenced([ // event:
                 NMEvent.Text(value: "@云音乐福利 分享单曲：【福利】#云村有票#漫游多彩的音乐之旅，2月14日情人节，小野丽莎@OnoLisa 上海演唱会邀你一起寻觅音乐的浪漫与温情~\n在歌声中找寻幸福与感动，在音乐里体味美丽人生。\n截至1月13日15：00，转发+评论（缺一不可）本条动态就有机会赢得【门票】！\n购票请戳→https://music.163.com/show/m/detail/2654034\n[多多亲吻][多多可怜][多多大哭][多多大笑][多多捂脸][多多无语][多多比耶][多多瞌睡][多多笑哭][多多耍酷][多多调皮][多多难过][西西再见][西西发怒][西西呕吐][西西奸笑][西西心动][西西惊吓][西西惊讶][西西晕了][西西机智][西西流汗][西西疑问]", size: 15),
                 NMEvent.Image(items: [ // event.pics
-                     NMEvent.Image.Item(url: URL(string: "http://p2.music.126.net/CbJ-ze_7g5Nkk198vWL3PQ==/109951164612529616.jpg"), size: .init(width: 1080, height: 1511))
+                     NMEvent.Image.Item(url: URL(string: "https://p2.music.126.net/CbJ-ze_7g5Nkk198vWL3PQ==/109951164612529616.jpg"), size: .init(width: 1080, height: 1511))
                 ]),
                 NMEvent.Video(),
-                NMEvent.Music.song("LA VIE EN ROSE (玫瑰人生)", subtitle: "小野リサ", cover: URL(string: "http://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg")),
+                NMEvent.Music.song("LA VIE EN ROSE (玫瑰人生)", subtitle: "小野リサ", cover: URL(string: "https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg")),
             ]),
-            NMEvent.Music.album("Skin", subtitle: "Flume", cover: URL(string: "http://p2.music.126.net/N9QDa3qlkRJ3IyFHVY07cg==/109951164430276051.jpg")),
+            NMEvent.Music.album("Skin", subtitle: "Flume", cover: URL(string: "https://p2.music.126.net/N9QDa3qlkRJ3IyFHVY07cg==/109951164430276051.jpg")),
         ]
     }
 }

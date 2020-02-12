@@ -9,9 +9,25 @@
 import UIKit
 import CommonCrypto
 
-class NMEmojiCoder {
+
+class NMBundle {
     
-    static let shared: NMEmojiCoder = .init()
+    static let shared: NMBundle = .init()
+    
+    func host() -> String {
+        return "https://p2.music.126.net"
+    }
+
+    func url(forImageIdentifier imageId: String, withExtension ext: String = "jpg") -> URL? {
+        return nm_md5_encode(imageId).flatMap {
+            return URL(string: "\(host())/\($0)/\(imageId).\(ext)")
+        }
+    }
+}
+
+class NMEmoji {
+    
+    static let shared: NMEmoji = .init()
     
     
     func name(for emoji: String) -> String? {
@@ -26,20 +42,10 @@ class NMEmojiCoder {
         return nil
     }
     
-    // formatImageUrl: => [self formatImageUrl:arg1 extension:@"jpg"]
-    // formatImageUrl:extension:
-    // dynamicPicHost +  [[Md5 encode_withkey:arg] lowercaseString]
-    // %@/%@/%@.%@
     
     func url(for custom: String) -> URL? {
         return c2i[custom].flatMap {
-            return URL(string: "https://p2.music.126.net/\(nm_md5_encode($0) ?? "")/\($0).jpg")
-            
-//                        return URL(string: "https://p2.music.126.net/V4m7SdpzgrPfjJWaTu3xSQ==/109951163626285326.jpg")
-
-//
-//            http://p1.music.126.net/WfFex7GPSUiuIKE8anlcbA==/109951163626285332.jpg
-
+            return NMBundle.shared.url(forImageIdentifier: $0)
         }
     }
     

@@ -44,7 +44,7 @@ func nmstr(_ str: String, _ font: CGFloat, _ color: UIColor, spacing: CGFloat = 
 
 
 class NMEventNode: ASCellNode {
-
+    
     let header: Header
     let tiles: [ASDisplayNode]
     let footer: Footer
@@ -52,12 +52,25 @@ class NMEventNode: ASCellNode {
     /// Create a cell for event.
     init(for event: NMEvent) {
         
+        // Configure the cell header for event.
         self.header = .init(for: event)
+        
+        // Configure the cell tiles for event.
         self.tiles = Display.parse(event.tiles ?? [], for: event)
+        self.playable = self.tiles.flatMap { tile -> [NMEventAutoPlayable] in
+            // Find the tiles within the node for playable.
+            if let tile = tile as? NMEventAutoPlayable {
+                return [tile]
+            }
+            return (tile as? NMEventNode.Display.Referenced)?.tiles.compactMap { $0 as? NMEventAutoPlayable } ?? []
+        }
+        
+        // Configure the cell footer for event.
         self.footer = .init(for: event)
         
         super.init()
         
+        // Configure the cell all subnodes.
         self.addSubnode(self.header)
         self.tiles.forEach {
             self.addSubnode($0)
@@ -81,6 +94,9 @@ class NMEventNode: ASCellNode {
         
         return spec.insets(top: 8, left: 12, bottom: 8, right: 12)
     }
+    
+    /// Whether the autoplay enabled status.
+    let playable: [NMEventAutoPlayable]
 }
 
 
@@ -229,7 +245,7 @@ extension NMEventNode.Display {
         /// The text attachment for text node.
         class Attachment: NSTextAttachment {
             
-            /// Current displayed image url.
+            /// A async displayed image url.
             var url: URL?
             
             /// A async display node for attachment.
@@ -240,6 +256,7 @@ extension NMEventNode.Display {
                 self.init()
                 self.url = url
                 self.display.isHidden = true
+                self.display.isLayerBacked = true
                 self.display.contentMode = .scaleAspectFill
                 self.display.style.preferredSize = .init(width: 38, height: 38)
             }
@@ -273,6 +290,7 @@ extension NMEventNode.Display {
             self.addSubnode(self.value) {
                 
                 $0.isUserInteractionEnabled = true
+                //$0.isLayerBacked = true
                 $0.delegate = self
                 $0.linkAttributeNames = [Text.tap.rawValue]
                 $0.attributedText = NSMutableAttributedString(string: entity.value).then { str in
@@ -304,7 +322,7 @@ extension NMEventNode.Display {
                             let emoji = String(contents[contents.index(after: contents.startIndex) ..< contents.index(before: contents.endIndex)])
                             
                             // This is a named emoji?
-                            if let newValue = NMEmojiCoder.shared.emoji(for: emoji) as NSString? {
+                            if let newValue = NMEmoji.shared.emoji(for: emoji) as NSString? {
                                 str.replaceCharacters(in: range, with: newValue as String)
                                 offset -= range.length - newValue.length
                                 range = NSMakeRange(range.location, newValue.length)
@@ -312,7 +330,7 @@ extension NMEventNode.Display {
                             }
                             
                             // This is a custom emotion(sync display)
-                            if let newValue = NMEmojiCoder.shared.image(for: emoji) {
+                            if let newValue = NMEmoji.shared.image(for: emoji) {
                                 let attachment = NSTextAttachment()
                                 attachment.image = newValue
                                 attachment.bounds = .init(x: 0, y: font.descender, width: newValue.size.width, height: newValue.size.height)
@@ -323,7 +341,7 @@ extension NMEventNode.Display {
                             }
                             
                             // This is a custom emotion(async display)
-                            if let newValue = NMEmojiCoder.shared.url(for: emoji) {
+                            if let newValue = NMEmoji.shared.url(for: emoji) {
                                 let attachment = Attachment(newValue)
                                 attachment.bounds = .init(x: 0, y: font.descender, width: 22, height: 22)
                                 str.replaceCharacters(in: range, with: NSAttributedString(attachment: attachment))
@@ -494,11 +512,12 @@ extension NMEventNode.Display {
             super.init()
             entity.items.forEach {
                 let image = ASNetworkImageNode()
-                image.defaultImage = timage1
-                image.cornerRadius = 4
-                image.backgroundColor = .random
                 image.style.preferredSize = $0.size
                 image.isLayerBacked = true
+                image.cornerRadius = 4
+                image.cornerRoundingType = .precomposited
+                //image.defaultImage = timage1
+                image.setURL($0.url, resetToDefault: false)
                 addSubnode(image)
             }
         }
@@ -525,8 +544,8 @@ extension NMEventNode.Display {
     }
     
     /// The video node for event.
-    class Video: ASDisplayNode, NMEventNodeDisplayable {
-        
+    class Video: ASDisplayNode, NMEventNodeDisplayable, NMEventAutoPlayable {
+
         let action: ASImageNode = .init()
         let background: ASNetworkImageNode = .init()
         
@@ -552,7 +571,9 @@ extension NMEventNode.Display {
                 
                 $0.backgroundColor = .random
                 $0.isLayerBacked = true
-                $0.defaultImage = timage2
+                
+                //$0.defaultImage = timage2
+                $0.setURL(URL(string: "https://p3.music.126.net/35-d9g0omVFFHfdhLmZ1og==/109951164627200188.jpg"), resetToDefault: false)
                 
                 
                 // self.video.url = URL(string: "https://github.com/texturegroup/texture/raw/master/docs/static/images/logo.png")
@@ -568,13 +589,7 @@ extension NMEventNode.Display {
 
                 // self.video.url = URL(string: "https://p.upyun.com/demo/webp/webp/gif-0.webp")
                 // self.video.url = URL(string: "https://p.upyun.com/demo/webp/webp/png-0.webp")
-
-                //self.video.shouldAutoplay = true
-                //self.video.shouldAutorepeat = false
-                //self.video.shouldAggressivelyRecoverFromStall = false
-                //self.video.isLayerBacked = true
-                //self.video.assetURL = URL(string: "https://vfx.mtime.cn/Video/2019/03/14/mp4/190314223540373995.mp4")
-                //self.video.assetURL = URL(string: "https://vfx.mtime.cn/Video/2019/07/25/mp4/190725150727428271.mp4")
+                
             }
             
             self.addSubnode(self.header) {
@@ -657,18 +672,79 @@ extension NMEventNode.Display {
                 overlays.append(header.insets(bottom: .infinity))
             }
             
+            video.map {
+                overlays.append($0)
+            }
+            
             overlays.append(ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumXY, child: action))
             
             
             return ASOverlayLayoutSpec.overlay(overlays)
         }
         
-        
-        @objc func play() {
+        func play() {
+            // If video player is nil, must to recreate the player.
+            guard video == nil else {
+                return
+            }
+            video = ASVideoNode().then {
+                
+                $0.alpha = 1
+                $0.backgroundColor = .black
+                
+                $0.muted = true
+                $0.isLayerBacked = true
+                $0.shouldAutoplay = true
+                $0.shouldAutorepeat = false
+                $0.shouldAggressivelyRecoverFromStall = false
+                
+                //$0.assetURL = URL(string: "https://vfx.mtime.cn/Video/2019/03/14/mp4/190314223540373995.mp4")
+                $0.assetURL = URL(string: "https://vfx.mtime.cn/Video/2019/07/25/mp4/190725150727428271.mp4")
+                
+                insertSubnode($0, belowSubnode: footer)
+                setNeedsLayout()
+               
+                //
+                $0.layer.add(CABasicAnimation(keyPath: "opacity").then {
+                    
+                    $0.fromValue = 0
+                    $0.toValue = 1
+                    $0.duration = 0.25
+                    
+                }, forKey: "opacity")
+            }
+            
+            action.alpha = 0
+            action.layer.add(CABasicAnimation(keyPath: "opacity").then {
+                
+                $0.fromValue = 1
+                $0.toValue = 0
+                $0.duration = 0.25
+                
+            }, forKey: "opacity")
+
+            
+//            UIView.animate(withDuration: 0.25) {
+//                self.video?.alpha = 1
+//            }
         }
         
-        @objc func stop() {
+        func stop() {
+            
+            video?.removeFromSupernode()
+            video = nil
+            
+            action.alpha = 1
+            action.layer.add(CABasicAnimation(keyPath: "opacity").then {
+                
+                $0.fromValue = 0
+                $0.toValue = 1
+                $0.duration = 0.25
+                
+            }, forKey: "opacity")
         }
+        
+        var video: ASVideoNode?
     }
 
     /// The music node for event.
@@ -687,6 +763,7 @@ extension NMEventNode.Display {
             
             self.backgroundColor = .init(white: 0, alpha: 0.2)
             self.cornerRadius = 8
+            self.cornerRoundingType = .defaultSlowCALayer
 
             self.title.truncationMode = .byTruncatingTail
             self.title.maximumNumberOfLines = 1
@@ -703,11 +780,12 @@ extension NMEventNode.Display {
             self.subtitle.attributedText = nmstr(entity.subtitle, 12, UIColor(white: 0, alpha: 0.5))
             self.subtitle.isLayerBacked = true
 
-            self.image.defaultImage = timage1
-            self.image.cornerRadius = 4
-            self.image.backgroundColor = .random
             self.image.style.preferredSize = .init(width: 40, height: 40)
             self.image.isLayerBacked = true
+            self.image.cornerRadius = 4
+            self.image.cornerRoundingType = .precomposited
+            //self.image.defaultImage = timage1
+            self.image.setURL(entity.cover, resetToDefault: true)
 
             self.addSubnode(self.image)
 
@@ -730,7 +808,7 @@ extension NMEventNode.Display {
             self.addSubnode(self.title)
             self.addSubnode(self.subtitle)
         }
-        
+
         /// Setup layout for all subnodes.
         override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
             
@@ -760,11 +838,13 @@ extension NMEventNode.Display {
             
             return spec.insets(top: 8, left: 8, bottom: 8, right: 8)
         }
+        
+        
     }
     
     /// The referenced node for event.
     class Referenced: ASDisplayNode, NMEventNodeDisplayable {
-        
+
         let tiles: [ASDisplayNode]
 
         /// Create a display node using entity and events.

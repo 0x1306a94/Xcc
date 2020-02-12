@@ -31,7 +31,7 @@
 		0C3C11DF22BA1DA000F4E310 /* JSONDecoderEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C11DE22BA1DA000F4E310 /* JSONDecoderEx.swift */; };
 		0C41048122EEA840008A016C /* NMLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C41048022EEA840008A016C /* NMLabel.swift */; };
 		0C499FB023E56647009762E8 /* NSTextAttachment2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C499FAF23E56647009762E8 /* NSTextAttachment2.swift */; };
-		0C499FB223E85DD1009762E8 /* NMEmojiCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C499FB123E85DD1009762E8 /* NMEmojiCoder.swift */; };
+		0C499FB623E95EBE009762E8 /* NMEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C499FB523E95EBE009762E8 /* NMEmoji.swift */; };
 		0C4AE16922E5983E00856489 /* NMUserHomePlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4AE16722E5983E00856489 /* NMUserHomePlaylistCell.swift */; };
 		0C4AE16A22E5983E00856489 /* NMUserHomePlaylistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4AE16822E5983E00856489 /* NMUserHomePlaylistCell.xib */; };
 		0C4AE16D22E59E2000856489 /* NMUserHomePlaylistHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4AE16B22E5984900856489 /* NMUserHomePlaylistHeaderView.xib */; };
@@ -61,6 +61,7 @@
 		0CC6A5BC22E33F1A009BFEAA /* NMBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6A5BB22E33F1A009BFEAA /* NMBadgeView.swift */; };
 		0CC6A64023CDA5D100363C37 /* events.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CC6A63F23CDA5D100363C37 /* events.json */; };
 		0CCB80AC217E28D80081F0CA /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCB80AB217E28D80081F0CA /* Logger.swift */; };
+		0CCCE51E23F3226F0071B272 /* NMEventAutoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCE51D23F3226F0071B272 /* NMEventAutoPlayer.swift */; };
 		0CDBDAC12196F84D003EDFCE /* NMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBDAC02196F84D003EDFCE /* NMTextField.swift */; };
 		0CDE22A2228B17360069BF47 /* NMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE22A1228B17360069BF47 /* NMMapViewController.swift */; };
 		0CEF1492218AB77500361C69 /* NMDiscoverRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF1491218AB77500361C69 /* NMDiscoverRecommendViewController.swift */; };
@@ -109,7 +110,7 @@
 		0C3C11DE22BA1DA000F4E310 /* JSONDecoderEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderEx.swift; sourceTree = "<group>"; };
 		0C41048022EEA840008A016C /* NMLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMLabel.swift; sourceTree = "<group>"; };
 		0C499FAF23E56647009762E8 /* NSTextAttachment2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextAttachment2.swift; sourceTree = "<group>"; };
-		0C499FB123E85DD1009762E8 /* NMEmojiCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMEmojiCoder.swift; sourceTree = "<group>"; };
+		0C499FB523E95EBE009762E8 /* NMEmoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMEmoji.swift; sourceTree = "<group>"; };
 		0C4AE16722E5983E00856489 /* NMUserHomePlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMUserHomePlaylistCell.swift; sourceTree = "<group>"; };
 		0C4AE16822E5983E00856489 /* NMUserHomePlaylistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NMUserHomePlaylistCell.xib; sourceTree = "<group>"; };
 		0C4AE16B22E5984900856489 /* NMUserHomePlaylistHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NMUserHomePlaylistHeaderView.xib; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		0CC6A5BB22E33F1A009BFEAA /* NMBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMBadgeView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		0CC6A63F23CDA5D100363C37 /* events.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = events.json; path = Resources/events.json; sourceTree = "<group>"; };
 		0CCB80AB217E28D80081F0CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0CCCE51D23F3226F0071B272 /* NMEventAutoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMEventAutoPlayer.swift; sourceTree = "<group>"; };
 		0CDBDAC02196F84D003EDFCE /* NMTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMTextField.swift; sourceTree = "<group>"; };
 		0CDE22A1228B17360069BF47 /* NMMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMMapViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		0CEF1491218AB77500361C69 /* NMDiscoverRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMDiscoverRecommendViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		0C3253A622DE25B6008A7801 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0C499FB523E95EBE009762E8 /* NMEmoji.swift */,
 				0C85FCDC22DF420700923518 /* NMLaunchViewController.swift */,
 				0C32C7BD2180DF07002F429D /* NMBlurView.swift */,
 				0CC6A5BB22E33F1A009BFEAA /* NMBadgeView.swift */,
@@ -238,7 +241,7 @@
 				0C1112522187099F001539E8 /* NMSegmentedController.swift */,
 				0C41048022EEA840008A016C /* NMLabel.swift */,
 				0C33A0BC2387C25300150A87 /* NMNetworking.swift */,
-				0C499FB123E85DD1009762E8 /* NMEmojiCoder.swift */,
+				0CCCE51D23F3226F0071B272 /* NMEventAutoPlayer.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				0CDBDAC12196F84D003EDFCE /* NMTextField.swift in Sources */,
 				0C6C00542146BF4B0001B742 /* ViewController.swift in Sources */,
 				0C8F99F52276D75D00FB3842 /* XCSegmentable.swift in Sources */,
+				0CCCE51E23F3226F0071B272 /* NMEventAutoPlayer.swift in Sources */,
 				0C85FCDB22DF1E0500923518 /* NMAvatarView.swift in Sources */,
 				0CC6A5BA22E31F25009BFEAA /* NMUserHomeAboutViewController.swift in Sources */,
 				0C5BDD972357FFB40074F4A9 /* NMSegmentedControl.swift in Sources */,
@@ -484,12 +488,12 @@
 				0CEF1492218AB77500361C69 /* NMDiscoverRecommendViewController.swift in Sources */,
 				0C0E9663230143C50038D814 /* UILabel+Helper.swift in Sources */,
 				0C7E9CF922DD9C4A007710DE /* NMBlurView.swift in Sources */,
-				0C499FB223E85DD1009762E8 /* NMEmojiCoder.swift in Sources */,
 				0C499FB023E56647009762E8 /* NSTextAttachment2.swift in Sources */,
 				0C6C00642147513F0001B742 /* XCParallaxable.swift in Sources */,
 				0CC6A5BC22E33F1A009BFEAA /* NMBadgeView.swift in Sources */,
 				0C77552623CC003C00D4BE50 /* NMEvent.swift in Sources */,
 				0CF95829239175B700AB5324 /* NMFriendsActivityViewController.swift in Sources */,
+				0C499FB623E95EBE009762E8 /* NMEmoji.swift in Sources */,
 				0C77552823CC004500D4BE50 /* NMEventNode.swift in Sources */,
 				0C1112532187099F001539E8 /* NMSegmentedController.swift in Sources */,
 				0CEF1494218AB79200361C69 /* NMDiscoverDjViewController.swift in Sources */,

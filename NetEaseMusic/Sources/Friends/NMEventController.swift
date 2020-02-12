@@ -12,6 +12,8 @@ import AsyncDisplayKit
 
 class NMEventController: ASViewController<ASTableNode>, ASTableDataSource, ASTableDelegate {
     
+    var player: NMEventAutoPlayer = .init()
+    
     override init(node: ASTableNode) {
         super.init(node: node)
         node.dataSource = self
@@ -22,6 +24,15 @@ class NMEventController: ASViewController<ASTableNode>, ASTableDataSource, ASTab
         super.init(node: ASTableNode())
         node.dataSource = self
         node.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Delayed processing is required because the cell node is not ready for display.
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            self.scrollViewDidScroll(self.node.view)
+        }
     }
     
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
@@ -45,6 +56,42 @@ class NMEventController: ASViewController<ASTableNode>, ASTableDataSource, ASTab
             return node
         }
     }
+    
+    func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
+        // If the node not support playable, ignore this node.
+        if let event = node as? NMEventNode, !event.playable.isEmpty {
+            player.add(event, for: event.view.convert(event.bounds, to: tableNode.view))
+        }
+    }
+    func tableNode(_ tableNode: ASTableNode, didEndDisplayingRowWith node: ASCellNode) {
+        // If the node not support playable, ignore this node.
+        if let event = node as? NMEventNode, !event.playable.isEmpty {
+            player.remove(event)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // When player item is empty, no needs calculate.
+        guard !player.isEmpty else {
+            return
+        }
+        
+        // Must need to compute the insets.
+        let edg: UIEdgeInsets
+        
+        if #available(iOS 11.0, *) {
+            edg = scrollView.adjustedContentInset
+        } else {
+            edg = scrollView.contentInset
+        }
+        
+        // Plays all playable nodes in the visable rect.
+        player.play(.init(x: 0,
+                          y: scrollView.contentOffset.y + edg.top,
+                          width: scrollView.frame.width,
+                          height: scrollView.frame.height - edg.top - edg.bottom))
+    }
+
 }
 
 
@@ -104,3 +151,4 @@ class NMEventBadgeNode: ASDisplayNode {
 //        )
 //    }
 //}
+

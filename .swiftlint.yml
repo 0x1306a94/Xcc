@@ -1,0 +1,13 @@
+disabled_rules: # rule identifiers to exclude from running
+  - identifier_name
+  - file_length
+  - line_length
+  - type_body_length
+  - function_body_length
+  - block_based_kvo
+  - cyclomatic_complexity
+  - trailing_whitespace
+  - vertical_whitespace
+  - nesting
+  - todo
+  - private_over_fileprivate

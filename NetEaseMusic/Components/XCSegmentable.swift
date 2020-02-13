@@ -13,48 +13,44 @@ public protocol XCSegmentable: class {
     
     /// Configure the vertical segmented managing view.
     var segmenting: XCSegmentingView { get }
-
+    
 }
 
 public extension XCSegmentable where Self: UIView {
     
     /// Configure the vertical segmented managing view.
     var segmenting: XCSegmentingView {
-        
         // If already created, reuse it.
-        if let fsObject = objc_getAssociatedObject(self, &XCSegmentingView.defaultKey) as? XCSegmentingView {
-            return fsObject
+        if let view = objc_getAssociatedObject(self, &XCSegmentingView.defaultKey) as? XCSegmentingView {
+            return view
         }
         
         // Create a new implementation object.
-        let fsObject = XCSegmentingView(embed: self)
-        objc_setAssociatedObject(self, &XCSegmentingView.defaultKey, fsObject, .OBJC_ASSOCIATION_RETAIN)
-        return fsObject
+        let view = XCSegmentingView(embed: self)
+        objc_setAssociatedObject(self, &XCSegmentingView.defaultKey, view, .OBJC_ASSOCIATION_RETAIN)
+        return view
     }
     
 }
 public extension XCSegmentable where Self: UIViewController {
-
+    
     /// Configure the vertical segmented managing view.
     var segmenting: XCSegmentingView {
-        
         // If already created, reuse it.
-        if let fsObject = objc_getAssociatedObject(self, &XCSegmentingView.defaultKey) as? XCSegmentingView {
-            return fsObject
+        if let view = objc_getAssociatedObject(self, &XCSegmentingView.defaultKey) as? XCSegmentingView {
+            return view
         }
         
         // Create a new implementation object.
-        let fsObject = XCSegmentingView(embed: self)
-        objc_setAssociatedObject(self, &XCSegmentingView.defaultKey, fsObject, .OBJC_ASSOCIATION_RETAIN)
-        return fsObject
+        let view = XCSegmentingView(embed: self)
+        objc_setAssociatedObject(self, &XCSegmentingView.defaultKey, view, .OBJC_ASSOCIATION_RETAIN)
+        return view
     }
-
+    
 }
-
 
 @objc
 open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
-    
     
     /// Create a container view with embed view.
     public convenience init(embed view: UIView) {
@@ -83,13 +79,12 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
                 $0.viewController = nil
             }
         }
-
+        
         // If the view has been loaded, call the update manually.
         if self.viewController?.isViewLoaded ?? false {
             self.updateSuperviewWithObserver(viewController)
         }
     }
-
     
     /// Configure the header view.
     open var headerView: UIView? {
@@ -116,10 +111,9 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     open var presentedView: UIVisualEffectView {
         return presentingView
     }
-
-
+    
     /// Configure the height of each level.
-    open var levels: Array<CGFloat> {
+    open var levels: [CGFloat] {
         set {
             // The levels must to change for update.
             guard newValue != orderedLevels, !newValue.isEmpty else {
@@ -147,17 +141,15 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         return updateContentSize(closest(at: level, velocity: 0), velocity: .zero, animated: animated)
     }
     
-
     /// Automatically perform to the specified method for context.
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         context.map {
             _ = perform(sel_registerName($0.assumingMemoryBound(to: Int8.self)), with: object, with: change)
         }
     }
-
+    
     /// Check the gestures recognizer are allows to be activate.
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        
         // Only needs to do is process the drag gesture recognizer.
         guard !(trackingView?.isTracking ?? false), let view = headerView, gestureRecognizer === dragGestureRecognizer else {
             return false
@@ -169,7 +161,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     
     /// Check the gestures recognizer are allows to be simultaneous activate.
     open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        
         // Only needs to do is process the drag gesture recognizer.
         guard gestureRecognizer === dragGestureRecognizer, otherGestureRecognizer is UIPanGestureRecognizer else {
             return false
@@ -182,15 +173,13 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         
         return subview.isDescendant(of: view)
     }
-
-
+    
     fileprivate func updateContentSize(_ height: CGFloat) {
-        
         // The UI is really updated when the height is has change.
         guard intrinsicLayoutConstraint.constant != height else {
             return
         }
-
+        
         // Apply the intrinsic content size change.
         intrinsicLayoutConstraint.constant = height
         
@@ -198,7 +187,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         updateContentVisibility(height)
     }
     fileprivate func updateContentSize(_ height: CGFloat, velocity: CGPoint, animated: Bool) {
-        
         // Add animation only if changes have been made.
         guard height != intrinsicLayoutConstraint.constant else {
             return
@@ -254,20 +242,18 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         }
     }
     fileprivate func updateContentSize(_ height: CGFloat, animated: Bool) {
-        
         // Calculate the best display content offset.
         let height = closest(at: height, velocity: 0)
         
         // Reset the content offset.
         dragContentOffset.y = height
         dragContentTranslation.y = height
-
+        
         // Update content size with animation.
         updateContentSize(height, velocity: .zero, animated: animated)
     }
     
-    @objc fileprivate func updateContentSizeWithObserver(_ scrollView: UIScrollView, change: [NSKeyValueChangeKey : Any]?) {
-        
+    @objc fileprivate func updateContentSizeWithObserver(_ scrollView: UIScrollView, change: [NSKeyValueChangeKey: Any]?) {
         // Check the scroll view state are ready.
         guard !isLockedOffsetChanges, scrollView.panGestureRecognizer.state != .possible, dragGestureRecognizer.state == .possible else {
             return
@@ -300,7 +286,7 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
             guard trackingView != nil else {
                 return
             }
-
+            
             // Calculates the offset of drag action.
             let translation = gestureRecognizer.translation(in: nil)
             
@@ -322,7 +308,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
             
             // Update dragging.
             updateDrag(gestureRecognizer.translation(in: nil))
-
             
         case .ended,
              .cancelled,
@@ -332,7 +317,7 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
             guard trackingView != nil else {
                 return
             }
-
+            
             // Mark the state as end.
             trackingView = nil
             
@@ -518,11 +503,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         // Add the view to the container view.
         presentingView.contentView.addSubview(newValue)
         
-        // The bottom layout constraint is not required, because when the content view or header view
-        // specifies the size, the footer view will be over out of the container view boundary.
-        let bottomLayoutConstraint = newValue.bottomAnchor.constraint(equalTo: intrinsicLayoutGuide.bottomAnchor)
-        bottomLayoutConstraint.priority = .defaultLow - 1
-        
         // Restore header view constraints
         NSLayoutConstraint.activate(
             [
@@ -530,7 +510,9 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
                 newValue.leftAnchor.constraint(equalTo: leftAnchor),
                 newValue.rightAnchor.constraint(equalTo: rightAnchor),
                 
-                bottomLayoutConstraint
+                // The bottom layout constraint is not required, because when the content view or header view
+                // specifies the size, the footer view will be over out of the container view boundary.
+                newValue.bottomAnchor.constraint(equalTo: intrinsicLayoutGuide.bottomAnchor).setPriority(.defaultLow - 1)
             ]
         )
         
@@ -539,7 +521,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     }
     
     fileprivate func updateSuperview(_ superview: UIView) {
-        
         // If the superview is changes, reattach it.
         guard superview !== self.superview else {
             return
@@ -551,7 +532,7 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         // And then add the container view to view controller.
         superview.addSubview(self)
         
-            // Get a bottom constraint that is compatible with iOS 10 and iOS 11+.
+        // Get a bottom constraint that is compatible with iOS 10 and iOS 11+.
         var safeAreaBottomAnchor = superview.bottomAnchor
         if #available(iOS 11.0, *) {
             safeAreaBottomAnchor = superview.safeAreaLayoutGuide.bottomAnchor
@@ -560,12 +541,12 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         // Finally restore the view controller constraints.
         NSLayoutConstraint.activate(
             [
-               leftAnchor.constraint(equalTo: superview.leftAnchor),
-               widthAnchor.constraint(equalTo: superview.widthAnchor),
-               bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-               
-               // If view controller is not specified, the intrinsic content size bottom aligne to the the superview bottom.
-               intrinsicLayoutGuide.bottomAnchor.constraint(equalTo: viewController?.bottomLayoutGuide.topAnchor ?? safeAreaBottomAnchor)
+                leftAnchor.constraint(equalTo: superview.leftAnchor),
+                widthAnchor.constraint(equalTo: superview.widthAnchor),
+                bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+                
+                // If view controller is not specified, the intrinsic content size bottom aligne to the the superview bottom.
+                intrinsicLayoutGuide.bottomAnchor.constraint(equalTo: viewController?.bottomLayoutGuide.topAnchor ?? safeAreaBottomAnchor)
             ]
         )
         
@@ -575,20 +556,16 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         footerView.map { updateSubview(forHeaderView: $0) }
     }
     @objc fileprivate func updateSuperviewWithObserver(_ viewController: UIViewController) {
-        
         // Apply superview for view controller.
         updateSuperview(viewController.view)
     }
     
-
     @inline(__always) fileprivate func beginDrag(_ translation: CGPoint) {
-        
         // Must update offset to the latest state before you can start dragging.
         dragContentOffset.y = intrinsicLayoutConstraint.constant
         dragContentTranslation.y = 0
     }
     @inline(__always) fileprivate func updateDrag(_ translation: CGPoint) {
-        
         // Incremental update content offset.
         dragContentOffset.y -= translation.y - dragContentTranslation.y
         dragContentTranslation.y = translation.y
@@ -597,7 +574,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         updateContentSize(align(dragContentOffset.y))
     }
     @inline(__always) fileprivate func endDrag(_ velocity: CGPoint, factor: CGFloat = 1) {
-        
         // Calculate the best display content offset.
         let offset = closest(at: dragContentOffset.y, velocity: velocity.y * factor)
         
@@ -615,7 +591,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     }
     
     @inline(__always) fileprivate func align(_ offset: CGFloat) -> CGFloat {
-        
         // Check if the lower bound is exceeded.
         if let minimum = orderedLevels.first, offset < minimum {
             return minimum
@@ -629,7 +604,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         return offset
     }
     @inline(__always) fileprivate func bounces(_ offset: CGFloat, maximum: CGFloat) -> CGFloat {
-        
         // Must need to prevent dividing by 0.
         guard offset != 0 && maximum != 0 else {
             return 0
@@ -643,7 +617,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     }
     
     @inline(__always) fileprivate func closest(at offset: CGFloat, velocity: CGFloat) -> CGFloat {
-        
         // If the drag is too small.
         guard abs(velocity) > 50 else {
             // Restore to position on started dragging.
@@ -664,19 +637,14 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         return orderedLevels.first { offset <= $0 } ?? orderedLevels.last ?? 0
     }
     @inline(__always) fileprivate func shrinking(at offset: CGFloat) -> CGFloat {
-        
         // Check all levels by order
-        for level in 0 ..< orderedLevels.count - 1 {
-            // Get to the lowest level.
-            if offset < orderedLevels[level + 1] {
-                return orderedLevels[level]
-            }
+        for level in 0 ..< orderedLevels.count - 1 where offset < orderedLevels[level + 1] {
+            return orderedLevels[level]
         }
         
         // Other case always use the highest one.
         return orderedLevels.last ?? 0
     }
-    
     
     /// Common init.
     fileprivate init() {
@@ -689,10 +657,10 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         
         // Create a intrinsic layout constraint.
         self.intrinsicLayoutConstraint = self.intrinsicLayoutGuide.heightAnchor.constraint(equalToConstant: 0)
-
+        
         // Build base view.
         super.init(frame: CGRect(x: 0, y: 0, width: 375, height: 240))
-
+        
         // Configure the presenting view.
         self.presentingView.bounds = self.bounds
         self.presentingView.isOpaque = true
@@ -733,29 +701,20 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
                 self.intrinsicLayoutGuide.topAnchor.constraint(equalTo: self.topAnchor),
                 self.intrinsicLayoutGuide.leftAnchor.constraint(equalTo: self.leftAnchor),
                 
-                self.intrinsicLayoutConstraint
+                self.intrinsicLayoutConstraint,
+                
+                // The bottom layout constraint is not required, because when the content view or header view
+                // specifies the size, the alls view will be over out of the container view boundary.
+                self.bottomLayoutGuide.bottomAnchor.constraint(equalTo: self.bottomAnchor).setPriority(.defaultLow - 1),
+                
+                // This is an optional constraint to eliminate the warning.
+                self.topLayoutGuide.widthAnchor.constraint(equalToConstant: 0).setPriority(.init(1)),
+                self.topLayoutGuide.heightAnchor.constraint(equalToConstant: 0).setPriority(.init(1)),
+                self.bottomLayoutGuide.widthAnchor.constraint(equalToConstant: 0).setPriority(.init(1)),
+                self.bottomLayoutGuide.heightAnchor.constraint(equalToConstant: 0).setPriority(.init(1)),
+                self.intrinsicLayoutGuide.widthAnchor.constraint(equalToConstant: 0).setPriority(.init(1))
             ]
         )
-        
-        // The bottom layout constraint is not required, because when the content view or header view
-        // specifies the size, the alls view will be over out of the container view boundary.
-        let bottomLayoutConstraint = self.bottomLayoutGuide.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        bottomLayoutConstraint.priority = .defaultLow - 1
-        self.addConstraint(bottomLayoutConstraint)
-        
-        let weakLayoutConstraints = [
-            self.topLayoutGuide.widthAnchor.constraint(equalToConstant: 0),
-            self.topLayoutGuide.heightAnchor.constraint(equalToConstant: 0),
-            self.bottomLayoutGuide.widthAnchor.constraint(equalToConstant: 0),
-            self.bottomLayoutGuide.heightAnchor.constraint(equalToConstant: 0),
-            self.intrinsicLayoutGuide.widthAnchor.constraint(equalToConstant: 0)
-        ]
-        
-        // This is an optional constraint to eliminate the warning.
-        weakLayoutConstraints.forEach {
-            $0.priority = .init(1)
-            self.addConstraint($0)
-        }
         
         // If there is level 3 or above, the default level 2 is displayed.
         var mheight = orderedLevels.first ?? 0
@@ -772,7 +731,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     }
     
     deinit {
-        
         // Remove observer when view controller is set.
         self.viewController?.removeObserver(self, forKeyPath: "view")
         self.viewController = nil
@@ -783,7 +741,6 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
         self.updateSubview(forFooterView: nil)
     }
     
-    
     @available(*, unavailable, message: "An embeddable object must be provided, Please initialize using init(embed:).")
     override public init(frame: CGRect) {
         fatalError("An embeddable object must be provided, Please initialize using init(embed:).")
@@ -793,14 +750,13 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("An embeddable object must be provided, Please initialize using init(embed:).")
     }
-
     
     fileprivate var visibility: CGFloat = 1
     fileprivate var isLockedOffsetChanges: Bool = false
     fileprivate var hasViewController: Bool = false
     
-    fileprivate var orderedLevels: Array<CGFloat> = []
-
+    fileprivate var orderedLevels: [CGFloat] = []
+    
     fileprivate var dragContentOffset: CGPoint = .zero
     fileprivate var dragContentTranslation: CGPoint = .zero
     
@@ -809,15 +765,15 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
     fileprivate let topLayoutGuide: UILayoutGuide = .init()
     fileprivate let bottomLayoutGuide: UILayoutGuide = .init()
     fileprivate let intrinsicLayoutGuide: UILayoutGuide = .init()
-
+    
     fileprivate let intrinsicLayoutConstraint: NSLayoutConstraint
     
     /// The current effect view.
     fileprivate let presentingView: UIVisualEffectView = .init()
-
+    
     /// The current tacking view.
     fileprivate weak var trackingView: UIScrollView?
-
+    
     /// The current associated view controller.
     fileprivate unowned(unsafe) var viewController: UIViewController?
     
@@ -826,14 +782,21 @@ open class XCSegmentingView: UIView, UIGestureRecognizerDelegate {
 }
 
 
+/// Quickly setup.
+fileprivate extension NSLayoutConstraint {
+    @inline(__always) func setPriority(_ priority: UILayoutPriority) -> NSLayoutConstraint {
+        self.priority = priority
+        return self
+    }
+}
+
 /// This copied codes for maintain components independence.
 /// The extension `NSObjectProtocol` protocol does not generate category load code.
 fileprivate extension NSObjectProtocol {
     
     /// Dynamic inheritance.
     @discardableResult
-    @inline(__always) func inheritClass(_ name: String, methods: ((AnyClass) -> ())? = nil) -> Self {
-        
+    @inline(__always) func inheritClass(_ name: String, methods: ((AnyClass) -> Void)? = nil) -> Self {
         // If the class have created, use it.
         if let clazz = NSClassFromString(name) {
             // If you have inherited it, ignore it.
@@ -844,7 +807,7 @@ fileprivate extension NSObjectProtocol {
         }
         
         // Creating a dynamic class.
-        if let clazz = objc_allocateClassPair(type(of: self), name, 0)  {
+        if let clazz = objc_allocateClassPair(type(of: self), name, 0) {
             // Reigster and add methods in dymamic class.
             objc_registerClassPair(clazz)
             methods?(clazz)
@@ -855,7 +818,7 @@ fileprivate extension NSObjectProtocol {
     }
     
     /// Add a destruct observer.
-    @inline(__always) func addDestructObserver(_ callback: @escaping () -> ()) {
+    @inline(__always) func addDestructObserver(_ callback: @escaping () -> Void) {
         objc_sync_enter(self)
         autoreleasepool {
             let key = UnsafeRawPointer(bitPattern: 0x69236523)!
@@ -865,17 +828,17 @@ fileprivate extension NSObjectProtocol {
             }
             // Dynamically inherit a class.
             let trigger = NSMutableArray(object: callback).inheritClass("XCDestructTrigger") {
-
+                
                 // Must using unmanaged object, because object is deallocing can't retain.
-                let dealloc: @convention(block) (Unmanaged<NSMutableArray>) -> () = {
+                let dealloc: @convention(block) (Unmanaged<NSMutableArray>) -> Void = {
                     // Call each registered callback.
                     $0.takeUnretainedValue().forEach {
-                        ($0 as? (() -> ()))?()
+                        ($0 as? (() -> Void))?()
                     }
                     
                     // Must call `dealloc` for `superclass`, otherwise will occur memory leaks.
                     let sel = Selector(String("dealloc"))
-                    if let imp = class_getMethodImplementation($0.takeUnretainedValue().superclass, sel)  {
+                    if let imp = class_getMethodImplementation($0.takeUnretainedValue().superclass, sel) {
                         unsafeBitCast(imp, to: (@convention(c) (Unmanaged<NSMutableArray>, Selector) -> Void).self)($0, sel)
                     }
                 }

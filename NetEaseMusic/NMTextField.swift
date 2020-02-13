@@ -14,12 +14,12 @@ class NMTextField: UITextField {
         super.init(frame: frame)
         logger.debug?.write()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         logger.debug?.write()
     }
-    
+
     deinit {
         logger.debug?.write()
     }

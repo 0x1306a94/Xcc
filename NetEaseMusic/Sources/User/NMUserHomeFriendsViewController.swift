@@ -9,21 +9,19 @@
 import UIKit
 
 class NMUserHomeFriendsViewController: UITableViewController {
-    
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 10
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-    
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloatBasedI375(60)
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //        return tableView.dequeueReusableCell(withIdentifier: "PlayList", for: indexPath)
         if let cell = tableView.dequeueReusableCell(withIdentifier: "abc") {
@@ -35,5 +33,5 @@ class NMUserHomeFriendsViewController: UITableViewController {
         cell.textLabel?.text = "\(indexPath)"
         return cell
     }
-    
+
 }

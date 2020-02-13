@@ -8,15 +8,5 @@
 
 import UIKit
 
-
-class NMVideoViewController: NMSegmentedViewController {
-    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        logger.debug?.write()
-//
-//        let vc = NMDiscoverDjViewController()
-//        vc.hidesBottomBarWhenPushed = true
-//        self.navigationController?.pushViewController(vc, animated: true)
-//
-//    }
+class NMVideoViewController: UIViewController {
 }

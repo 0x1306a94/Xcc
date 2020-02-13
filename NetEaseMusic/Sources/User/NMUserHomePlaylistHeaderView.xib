@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,7 +15,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svr-tj-UIp" userLabel="Background View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="systemRedColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTX-z8-Bzr" userLabel="Content View">
                     <rect key="frame" x="0.0" y="7" width="375" height="30"/>
@@ -48,7 +47,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="systemTealColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="NzL-nG-jbN" firstAttribute="leading" secondItem="ZTX-z8-Bzr" secondAttribute="leading" constant="16" id="809-se-0wn"/>
                         <constraint firstItem="EVU-fe-mhf" firstAttribute="top" secondItem="ZTX-z8-Bzr" secondAttribute="top" id="961-O0-VFv"/>
@@ -74,7 +73,6 @@
             <connections>
                 <outlet property="detailTextLabel" destination="EVU-fe-mhf" id="ijA-vD-Ze2"/>
                 <outlet property="textLabel" destination="NzL-nG-jbN" id="AuY-OV-VR3"/>
-                <outlet property="topLayoutConstraint" destination="EBm-uB-fIx" id="0lp-Vs-juX"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="136.33004926108376"/>
         </view>

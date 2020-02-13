@@ -10,50 +10,48 @@ import UIKit
 import MapKit
 
 @objc protocol PassThroughViewDelegate: NSObjectProtocol {
-    
+
     @objc optional var passThroughView: UIView? { get }
-    
+
     @objc optional func shouldPassPoint(_ point: CGPoint, event: UIEvent?, inView view: UIView) -> Bool
 }
 
-
 class PassThroughView: UIView {
-    
+
     weak var targetView: UIView?
-    
+
     weak var delegate: PassThroughViewDelegate?
-    
+
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        
+
         guard delegate?.shouldPassPoint?(point, event: event, inView: self) ?? true else {
             return self
         }
-        
+
         guard let view = super.hitTest(point, with: event), view !== self else {
-            
+
             return _unconditionallyPassthroughPoint(point, event: event)
         }
-        
+
         return view
     }
-    
+
     private func _unconditionallyPassthroughPoint(_ point: CGPoint, event: UIEvent?) -> UIView? {
-        
-        
+
         guard let view = _resolvedPassThroughView else {
             return nil
         }
-        
+
         guard let throughView = view as? PassThroughView else {
-            
+
             return view.hitTest(convert(point, to: view), with: event)
         }
-        
+
         return throughView._unconditionallyPassthroughPoint(point, event: event)
     }
-    
+
     private var _resolvedPassThroughView: UIView? {
-        
+
         return targetView ?? delegate?.passThroughView ?? nil
     }
 }
@@ -61,20 +59,23 @@ class PassThroughView: UIView {
 class NMMapSearchView: PassThroughView {
 }
 
-
 class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    
+
     let sw = NMMapSearchView()
 
     override func loadView() {
         self.view = sw//PassThroughView()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         var theme = 0
-        theme = 0
+        if #available(iOS 12.0, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                theme = 1
+            }
+        }
         
         if theme == 0 {
             segmenting.presentedView.effect = UIBlurEffect(style: .extraLight)
@@ -88,7 +89,7 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
                 $0.masksToBounds = true
             }
         }
-        
+
         segmenting.addSubview(
             UIImageView(image: #imageLiteral(resourceName: "CardShadow")).then {
 
@@ -99,7 +100,7 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
                 //$0.addConstraint($0.heightAnchor.constraint(equalToConstant: 20))
             }
         )
-        
+
         segmenting.levels = [
             68,
             UIScreen.main.bounds.height * 0.44,
@@ -109,11 +110,11 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
 
             $0.isOpaque = true
             $0.isTranslucent = true
-            
+
             // Clear blur effect background.
             $0.backgroundColor = .clear
             $0.backgroundImage = .init()
-            
+
             // UISearchBar -> _UIBackdropView
             if $0.responds(to: NSSelectorFromString("_setBackdropStyle:")) {
                 // http://iphonedevwiki.net/index.php/UIBackdropView
@@ -128,9 +129,9 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
             //$0.barStyle = .blackTranslucent
             $0.placeholder = "Search for a place or address"
             $0.addConstraint($0.heightAnchor.constraint(equalToConstant: segmenting.levels[0]))
-            
+
             $0.delegate = self
-            
+
             $0.addSubview(UIView().then {
                 let height = 1 / UIScreen.main.scale
                 $0.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
@@ -139,13 +140,13 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
             })
         }
         segmenting.contentView = UITableView().then {
-            
+
             $0.backgroundColor = .clear//.random
             $0.dataSource = self
             $0.delegate = self
             $0.separatorStyle = .none
             $0.keyboardDismissMode = .onDrag
-            
+
             // Keep the size.
             $0.addConstraint($0.heightAnchor.constraint(greaterThanOrEqualToConstant: 88))
 
@@ -165,7 +166,7 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
             $0.addConstraint($0.heightAnchor.constraint(equalToConstant: 52))
         }
     }
-    
+
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         // Editing.
         segmenting.setLevel(segmenting.levels.last ?? 0, animated: true)
@@ -175,12 +176,12 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
         }
         return true
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         // Cancel.
         view.endEditing(true)
     }
-    
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         // Cancel.
         UIView.animate(withDuration: 0.25) {
@@ -188,25 +189,25 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
             searchBar.layoutIfNeeded()
         }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 10
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         var color: UIColor = .clear
         if indexPath.row % 2 == 0 {
             color = UIColor.black.withAlphaComponent(0.1)
         }
-        
+
         if let cell = tableView.dequeueReusableCell(withIdentifier: "AB") {
             cell.contentView.backgroundColor = .clear//.random
             cell.backgroundColor = color
@@ -217,7 +218,7 @@ class NMMapSearchViewController: UIViewController, XCSegmentable, UITableViewDel
         cell.backgroundColor = color
         return cell
     }
-    
+
     //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     //        logger.trace?.write()
     //    }
@@ -235,27 +236,27 @@ class NMMapViewController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let mapView = MKMapView(frame: view.bounds)
         mapView.mapType = .standard
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(mapView)
-        
+
         let center = CLLocationCoordinate2D(latitude: 22.55,
                                             longitude: 113.88)
         mapView.region = .init(center: center, span: .init(latitudeDelta: 0.022, longitudeDelta: 0.016))
-        
+
         let searchView = searchVc.view!
         searchView.frame = view.bounds
         searchView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(searchView)
         addChild(searchVc)
-        
+
         searchVc.sw.targetView = mapView
 //        (searchView as? PassThroughView).map {
 //            $0.targetView = mapView
 //        }
     }
-    
+
     let searchVc: NMMapSearchViewController = .init()
 }

@@ -13,19 +13,18 @@ class NMNavigationController: UINavigationController {
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationBar.shadowImage = UIImage()
+//        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
-    
-    
+
     open override var childForStatusBarStyle: UIViewController? {
         return topViewController
     }
-    
+
     open override var childForStatusBarHidden: UIViewController? {
         return topViewController
     }
-    
+
     open override var childForHomeIndicatorAutoHidden: UIViewController? {
         return topViewController
     }

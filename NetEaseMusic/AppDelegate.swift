@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import AsyncDisplayKit
 
+//
 //
 //func UITabBarButton_iOS_12_1_Patch() {
 //
@@ -30,6 +32,26 @@ import UIKit
 //
 //    } as @convention(block) (UIView, CGRect) -> () ))
 //}
+//    class Tracker {
+//
+//        func add(_ offset: CGFloat, timestamp: TimeInterval = CACurrentMediaTime()) {
+//
+//            let distance = offset - self.offset
+//            let elapsed = timestamp - self.timestamp
+//
+//            self.offset = offset
+//            self.timestamp = timestamp
+//
+//            self.elapsed = elapsed
+//            self.velocity = (elapsed != 0 ? distance / CGFloat(elapsed) : 0)
+//        }
+//
+//        private var offset: CGFloat = 0
+//        private var timestamp: TimeInterval = 0
+//
+//        private var elapsed: TimeInterval = 0
+//        private var velocity: CGFloat = 0
+//    }
 
 
 @UIApplicationMain
@@ -39,14 +61,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Disable Async display kit all logs.
+        ASDisableLogging()
+
         #if DEBUG
-        NMLaunchViewController.show(5)
+        NMLaunchViewController.show(2)
         #endif
         
+        //#if DEBUG
+        //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+        //    UIApplication.shared.keyWindow?.showsFPS = true
+        //}
+        //#endif
+
         // Override point for customization after application launch.
         return true
     }
-    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -68,9 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        
+
     }
 
-
 }
-

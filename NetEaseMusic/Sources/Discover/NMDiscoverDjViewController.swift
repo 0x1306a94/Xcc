@@ -9,13 +9,13 @@
 import UIKit
 
 class NMDiscoverDjViewController: UITableViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .random
     }
-    
+
     /*
     // MARK: - Navigation
 

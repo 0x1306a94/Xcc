@@ -9,5 +9,5 @@
 import UIKit
 
 open class NMTabBar: UITabBar {
-    
+
 }

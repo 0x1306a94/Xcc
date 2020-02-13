@@ -9,23 +9,24 @@
 import UIKit
 
 open class NMTabBarController: UITabBarController {
-    
+
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.selectedIndex = 4
+
+//        self.selectedIndex = 4
+        self.selectedIndex = 3
     }
-    
+
     open override var childForStatusBarStyle: UIViewController? {
         return selectedViewController
     }
-    
+
     open override var childForStatusBarHidden: UIViewController? {
         return selectedViewController
     }
-    
+
     open override var childForHomeIndicatorAutoHidden: UIViewController? {
         return selectedViewController
     }
-    
+
 }

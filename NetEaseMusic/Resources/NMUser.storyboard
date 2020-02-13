@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i00-Qx-r5W">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Home-->
+        <scene sceneID="xI7-h3-cvH">
+            <objects>
+                <viewController storyboardIdentifier="NMUserHomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i00-Qx-r5W" userLabel="User Home" customClass="NMUserHomeViewController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hxk-2S-mHd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq7-2V-MK1" customClass="NMBlurView" customModule="NetEaseMusic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="372"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUA-OX-mia">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3C-fQ-Mnv">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="244"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="N6Y-Ax-Jbd">
+                                                <rect key="frame" x="20" y="115" width="335" height="93.333333333333314"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="云音乐小秘书" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbQ-Gd-tCX">
+                                                        <rect key="frame" x="0.0" y="0.0" width="122.33333333333333" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="云音乐小甜心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHO-QR-Ccl">
+                                                        <rect key="frame" x="0.0" y="31.999999999999996" width="73.666666666666671" height="14.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" white="1" alpha="0.80118257705479456" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TXi-ff-prP">
+                                                        <rect key="frame" x="0.0" y="54.333333333333314" width="147.66666666666666" height="13"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Zu-a1-GGf">
+                                                                <rect key="frame" x="0.0" y="0.0" width="55" height="13"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <state key="normal" title="关注 428">
+                                                                    <color key="titleColor" white="1" alpha="0.79799871575342463" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypx-D8-eJX">
+                                                                <rect key="frame" x="65" y="0.0" width="0.6666666666666714" height="13"/>
+                                                                <color key="backgroundColor" white="1" alpha="0.79979130993150682" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="0.5" id="KPZ-VJ-ETQ"/>
+                                                                    <constraint firstAttribute="height" constant="13" id="k56-mW-E9U"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irF-qt-y0Y">
+                                                                <rect key="frame" x="75.666666666666671" y="0.0" width="72.000000000000014" height="13"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <state key="normal" title="粉丝 99999">
+                                                                    <color key="titleColor" white="1" alpha="0.79799871575342463" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lQx-EG-WBJ">
+                                                        <rect key="frame" x="0.0" y="75.333333333333314" width="280" height="18"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="黑胶VIP/年" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OV-5L-wwq" customClass="NMBadgeView" customModule="NetEaseMusic" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女:90后" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDp-KS-jXV" customClass="NMBadgeView" customModule="NetEaseMusic" customModuleProvider="target">
+                                                                <rect key="frame" x="74" y="0.0" width="62.333333333333343" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv.7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhC-id-uJT" customClass="NMBadgeView" customModule="NetEaseMusic" customModuleProvider="target">
+                                                                <rect key="frame" x="140.33333333333334" y="0.0" width="41.333333333333343" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd5-kb-t8f" customClass="NMBadgeView" customModule="NetEaseMusic" customModuleProvider="target">
+                                                                <rect key="frame" x="185.66666666666666" y="0.0" width="39.333333333333343" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="摩羯座" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpq-IX-hIo" customClass="NMBadgeView" customModule="NetEaseMusic" customModuleProvider="target">
+                                                                <rect key="frame" x="229" y="0.0" width="51" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iRW-l9-a5e">
+                                                <rect key="frame" x="196" y="40" width="164" height="34"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ns3-Om-e3Q">
+                                                        <rect key="frame" x="0.0" y="0.0" width="78" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="P4S-kA-FmU"/>
+                                                            <constraint firstAttribute="width" constant="78" id="rTZ-42-0cx"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <inset key="contentEdgeInsets" minX="8" minY="4" maxX="8" maxY="4"/>
+                                                        <state key="normal" title="关 注"/>
+                                                        <connections>
+                                                            <action selector="test2:" destination="i00-Qx-r5W" eventType="touchUpInside" id="7qn-WM-F22"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlb-8a-4kW">
+                                                        <rect key="frame" x="86" y="0.0" width="78" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="34" id="5Wk-eg-Jl5"/>
+                                                            <constraint firstAttribute="width" constant="78" id="jFu-kW-vIW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <inset key="contentEdgeInsets" minX="8" minY="4" maxX="8" maxY="4"/>
+                                                        <state key="normal" title="编 辑"/>
+                                                        <connections>
+                                                            <action selector="test1:" destination="i00-Qx-r5W" eventType="touchUpInside" id="D9T-TK-aOs"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="PkJ-m0-0YJ" customClass="NMAvatarView" customModule="NetEaseMusic" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="20" width="80" height="80"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="FTU-oz-yFi"/>
+                                                    <constraint firstAttribute="width" constant="80" id="OEb-l3-nyL"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="badge" value="cm2_icn_user_v"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="avatar" value="user_head"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="244" id="AnL-e4-tcL" customClass="AutoLayoutBasedI375" customModule="NetEaseMusic" customModuleProvider="target"/>
+                                            <constraint firstItem="PkJ-m0-0YJ" firstAttribute="leading" secondItem="H3C-fQ-Mnv" secondAttribute="leading" constant="20" id="CvM-oX-Iwq"/>
+                                            <constraint firstAttribute="trailing" secondItem="iRW-l9-a5e" secondAttribute="trailing" constant="15" id="IiA-cC-ED0"/>
+                                            <constraint firstAttribute="trailing" secondItem="N6Y-Ax-Jbd" secondAttribute="trailing" constant="20" id="Iyd-l1-pNX"/>
+                                            <constraint firstItem="N6Y-Ax-Jbd" firstAttribute="leading" secondItem="H3C-fQ-Mnv" secondAttribute="leading" constant="20" id="RUJ-tW-b5c"/>
+                                            <constraint firstItem="iRW-l9-a5e" firstAttribute="top" secondItem="H3C-fQ-Mnv" secondAttribute="top" constant="40" id="elP-Fa-S1o"/>
+                                            <constraint firstItem="PkJ-m0-0YJ" firstAttribute="top" secondItem="H3C-fQ-Mnv" secondAttribute="top" constant="20" id="psU-zv-5V7"/>
+                                            <constraint firstItem="N6Y-Ax-Jbd" firstAttribute="top" secondItem="H3C-fQ-Mnv" secondAttribute="top" constant="115" id="vjg-DD-7Li"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cix-sr-H5e" customClass="NMSegmentedControl" customModule="NetEaseMusic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="332" width="375" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="6Rm-7w-Q26" customClass="AutoLayoutBasedI375" customModule="NetEaseMusic" customModuleProvider="target"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jUA-OX-mia" firstAttribute="leading" secondItem="eq7-2V-MK1" secondAttribute="leading" id="18x-oX-Ud1"/>
+                                    <constraint firstItem="cix-sr-H5e" firstAttribute="top" secondItem="H3C-fQ-Mnv" secondAttribute="bottom" id="7mm-fl-sty"/>
+                                    <constraint firstItem="jUA-OX-mia" firstAttribute="top" secondItem="eq7-2V-MK1" secondAttribute="top" id="7n6-r2-2gC"/>
+                                    <constraint firstAttribute="trailing" secondItem="H3C-fQ-Mnv" secondAttribute="trailing" id="Bli-q2-FWT"/>
+                                    <constraint firstAttribute="trailing" secondItem="jUA-OX-mia" secondAttribute="trailing" id="Fze-5Q-MYr"/>
+                                    <constraint firstAttribute="bottom" secondItem="cix-sr-H5e" secondAttribute="bottom" id="IM8-Mw-9NC"/>
+                                    <constraint firstItem="cix-sr-H5e" firstAttribute="leading" secondItem="eq7-2V-MK1" secondAttribute="leading" id="M3m-uh-ERu"/>
+                                    <constraint firstItem="H3C-fQ-Mnv" firstAttribute="top" secondItem="jUA-OX-mia" secondAttribute="bottom" id="V0f-C2-A4h"/>
+                                    <constraint firstAttribute="trailing" secondItem="cix-sr-H5e" secondAttribute="trailing" id="agK-Sv-2ZV"/>
+                                    <constraint firstItem="H3C-fQ-Mnv" firstAttribute="leading" secondItem="eq7-2V-MK1" secondAttribute="leading" id="vC9-7R-1DC"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="image" value="user_background"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UcT-Y5-rBK" firstAttribute="trailing" secondItem="eq7-2V-MK1" secondAttribute="trailing" id="0fm-K1-wxO"/>
+                            <constraint firstItem="eq7-2V-MK1" firstAttribute="leading" secondItem="UcT-Y5-rBK" secondAttribute="leading" id="1Vt-ok-NTg"/>
+                            <constraint firstItem="H3C-fQ-Mnv" firstAttribute="top" secondItem="UcT-Y5-rBK" secondAttribute="top" id="BY0-4C-NVA"/>
+                            <constraint firstItem="eq7-2V-MK1" firstAttribute="top" secondItem="Hxk-2S-mHd" secondAttribute="top" id="ael-yb-od6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UcT-Y5-rBK"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="HGr-e0-0Ak"/>
+                    <navigationItem key="navigationItem" id="sAq-ZS-HGT"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="eq7-2V-MK1" id="OUe-G3-M6C"/>
+                        <outlet property="contentView" destination="H3C-fQ-Mnv" id="kl2-dl-JgJ"/>
+                        <outlet property="footerView" destination="cix-sr-H5e" id="q6h-ke-o64"/>
+                        <outlet property="headerView" destination="jUA-OX-mia" id="aNj-WZ-tyY"/>
+                        <outlet property="segmentedControl" destination="cix-sr-H5e" id="UtL-Kf-Uha"/>
+                        <outletCollection property="parallaxingViewDelegates" destination="eq7-2V-MK1" collectionClass="NSMutableArray" id="WTR-Jo-0F1"/>
+                        <outletCollection property="pagingViewDelegates" destination="cix-sr-H5e" collectionClass="NSMutableArray" id="hiu-FC-3W5"/>
+                        <segue destination="Wre-ie-lql" kind="custom" identifier="no-warning" customClass="NMEmabbedViewControllerSegue" customModule="NetEaseMusic" customModuleProvider="target" id="6EI-qY-Z1L"/>
+                        <segue destination="PRY-bl-5I8" kind="custom" identifier="no-warning" customClass="NMEmabbedViewControllerSegue" customModule="NetEaseMusic" customModuleProvider="target" id="bDb-B6-1b3"/>
+                        <segue destination="V3I-IC-pOJ" kind="custom" identifier="no-warning" customClass="NMEmabbedViewControllerSegue" customModule="NetEaseMusic" customModuleProvider="target" id="JfV-ro-C1W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HsF-Wm-WPo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-0.80000000000000004" y="0.0"/>
+        </scene>
+        <!--User Home Music-->
+        <scene sceneID="cjK-O8-4PI">
+            <objects>
+                <tableViewController storyboardIdentifier="NMUserHomePlaylistViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wre-ie-lql" userLabel="User Home Music" customClass="NMUserHomePlaylistViewController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hi3-tt-xMT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Wre-ie-lql" id="BqV-MD-qIX"/>
+                            <outlet property="delegate" destination="Wre-ie-lql" id="T7j-4s-mCf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="音乐" id="EhE-7A-o2h"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Led-Lu-SCp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-606" y="737"/>
+        </scene>
+        <!--User Home Moments-->
+        <scene sceneID="Naa-XV-9B3">
+            <objects>
+                <tableViewController storyboardIdentifier="NMUserHomeFriendsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PRY-bl-5I8" userLabel="User Home Moments" customClass="NMUserHomeFriendsViewController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MHg-EE-iFv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="PRY-bl-5I8" id="jKE-RF-0ED"/>
+                            <outlet property="delegate" destination="PRY-bl-5I8" id="Abm-0M-NhY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="动态" id="lHn-Sj-4qV"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mr7-Yp-Ier" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="737"/>
+        </scene>
+        <!--User Home About-->
+        <scene sceneID="8D7-W0-xDp">
+            <objects>
+                <tableViewController storyboardIdentifier="NMUserHomeAboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V3I-IC-pOJ" userLabel="User Home About" customClass="NMUserHomeAboutViewController" customModule="NetEaseMusic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="MCe-Tx-mDC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="" footerTitle="" id="lWs-ka-vCF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Auth" rowHeight="89" id="TZh-DF-cOz">
+                                        <rect key="frame" x="0.0" y="39.666667938232422" width="375" height="89"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TZh-DF-cOz" id="Kx7-mT-Jeh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="认证信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iw-NW-cYM">
+                                                    <rect key="frame" x="16" y="20" width="343" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KeT-HY-6hO">
+                                                    <rect key="frame" x="16" y="51" width="343" height="21"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cm2_icn_user_v" translatesAutoresizingMaskIntoConstraints="NO" id="ptQ-hH-AcB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="21" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="21" id="mTG-xc-Ecn"/>
+                                                                <constraint firstAttribute="height" constant="21" id="utt-7L-9KU"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="云音乐小甜心" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inM-a0-B1R">
+                                                            <rect key="frame" x="26" y="0.0" width="317" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="inM-a0-B1R" secondAttribute="trailing" id="1OM-Lv-R4a"/>
+                                                        <constraint firstItem="inM-a0-B1R" firstAttribute="leading" secondItem="ptQ-hH-AcB" secondAttribute="trailing" constant="5" id="VWr-l4-Oga"/>
+                                                        <constraint firstItem="inM-a0-B1R" firstAttribute="top" secondItem="KeT-HY-6hO" secondAttribute="top" id="ulU-xU-XhG"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2iw-NW-cYM" firstAttribute="top" secondItem="Kx7-mT-Jeh" secondAttribute="top" constant="20" id="YVu-bN-sli"/>
+                                                <constraint firstAttribute="trailing" secondItem="2iw-NW-cYM" secondAttribute="trailing" constant="16" id="bRj-iV-Q1n"/>
+                                                <constraint firstItem="KeT-HY-6hO" firstAttribute="leading" secondItem="Kx7-mT-Jeh" secondAttribute="leading" constant="16" id="hHu-Mf-Jiy"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KeT-HY-6hO" secondAttribute="bottom" constant="10" id="u2g-uG-e9Q"/>
+                                                <constraint firstItem="KeT-HY-6hO" firstAttribute="top" secondItem="2iw-NW-cYM" secondAttribute="bottom" constant="14" id="uI1-Yb-s1L"/>
+                                                <constraint firstItem="2iw-NW-cYM" firstAttribute="leading" secondItem="Kx7-mT-Jeh" secondAttribute="leading" constant="16" id="ucT-xf-65F"/>
+                                                <constraint firstAttribute="trailing" secondItem="KeT-HY-6hO" secondAttribute="trailing" constant="16" id="usr-sX-poi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Info" rowHeight="162" id="QyX-TL-BUR">
+                                        <rect key="frame" x="0.0" y="128.66666793823242" width="375" height="162"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QyX-TL-BUR" id="zk6-yI-x3l">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="个人信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MN-Yt-0lh">
+                                                    <rect key="frame" x="16" y="20" width="343" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y93-M2-fUJ">
+                                                    <rect key="frame" x="16" y="50.999999999999993" width="343" height="86.333333333333314"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="等级">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content">: Lv.7
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="性别">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=": ">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="女">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="年龄">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=": 90">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="后">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="魔蝎座">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="地区">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=": ">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="北京">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="y93-M2-fUJ" secondAttribute="bottom" constant="10" id="26e-dC-kLD"/>
+                                                <constraint firstAttribute="trailing" secondItem="y93-M2-fUJ" secondAttribute="trailing" constant="16" id="P58-iS-M33"/>
+                                                <constraint firstAttribute="trailing" secondItem="2MN-Yt-0lh" secondAttribute="trailing" constant="16" id="Yck-Zj-NU3"/>
+                                                <constraint firstItem="y93-M2-fUJ" firstAttribute="leading" secondItem="zk6-yI-x3l" secondAttribute="leading" constant="16" id="kB4-ke-cja"/>
+                                                <constraint firstItem="y93-M2-fUJ" firstAttribute="top" secondItem="2MN-Yt-0lh" secondAttribute="bottom" constant="14" id="mfQ-yg-SxV"/>
+                                                <constraint firstItem="2MN-Yt-0lh" firstAttribute="leading" secondItem="zk6-yI-x3l" secondAttribute="leading" constant="16" id="tyJ-S6-8Bq"/>
+                                                <constraint firstItem="2MN-Yt-0lh" firstAttribute="top" secondItem="zk6-yI-x3l" secondAttribute="top" constant="20" id="ya2-3O-XFa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Intro" rowHeight="261" id="Ufk-Be-VHz">
+                                        <rect key="frame" x="0.0" y="290.66666793823242" width="375" height="261"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ufk-Be-VHz" id="cgv-in-EWT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="261"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="个人简介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-UR-6LN">
+                                                    <rect key="frame" x="16" y="20" width="343" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Crj-40-c5A">
+                                                    <rect key="frame" x="16" y="51.000000000000014" width="343" height="180.33333333333337"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="网易云音乐是">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="6">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="亿人都在使用的音乐平台，致力于帮助用户发现音乐惊喜，帮助音乐人实现梦想。">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="客服">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="@">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="云音乐客服">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="在线时间：">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="9">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="：">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="00 - 24">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="：">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="00">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="，如您在使用过程中遇到任何问题，欢迎私信咨询，我们会尽快回复。">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="如果仍然不能解决您的问题，请邮件我们：">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="用户：">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content">mc5990@163.com
+</string>
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="音乐人">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <font key="NSOriginalFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content=": yyr599@163.com">
+                                                            <attributes>
+                                                                <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <font key="NSFont" metaFont="system"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Crj-40-c5A" secondAttribute="bottom" constant="10" id="96t-bi-lzF"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ndd-UR-6LN" secondAttribute="trailing" constant="16" id="AVr-X2-Nao"/>
+                                                <constraint firstItem="Crj-40-c5A" firstAttribute="top" secondItem="Ndd-UR-6LN" secondAttribute="bottom" constant="14" id="FDJ-iW-5Sf"/>
+                                                <constraint firstItem="Ndd-UR-6LN" firstAttribute="leading" secondItem="cgv-in-EWT" secondAttribute="leading" constant="16" id="Hf6-VA-0hi"/>
+                                                <constraint firstAttribute="trailing" secondItem="Crj-40-c5A" secondAttribute="trailing" constant="16" id="lhM-wa-F5V"/>
+                                                <constraint firstItem="Ndd-UR-6LN" firstAttribute="top" secondItem="cgv-in-EWT" secondAttribute="top" constant="20" id="mX8-ON-Wwv"/>
+                                                <constraint firstItem="Crj-40-c5A" firstAttribute="leading" secondItem="cgv-in-EWT" secondAttribute="leading" constant="16" id="s4D-ri-FlN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" footerTitle="" id="hvF-op-UBR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Activity" rowHeight="39" id="YwZ-Cu-dXv">
+                                        <rect key="frame" x="0.0" y="603.33333396911621" width="375" height="39"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YwZ-Cu-dXv" id="FWf-FJ-B0X">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="我的评论" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfb-gq-hQ6">
+                                                    <rect key="frame" x="16.000000000000004" y="22" width="57.333333333333343" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(仅自己可见，可在隐私设置中修改)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kS2-wj-Yca">
+                                                    <rect key="frame" x="77.333333333333314" y="23" width="193" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Tfb-gq-hQ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FWf-FJ-B0X" secondAttribute="top" constant="20" id="0tl-mi-OZh"/>
+                                                <constraint firstItem="kS2-wj-Yca" firstAttribute="centerY" secondItem="Tfb-gq-hQ6" secondAttribute="centerY" id="Ekr-Qg-nde"/>
+                                                <constraint firstItem="kS2-wj-Yca" firstAttribute="leading" secondItem="Tfb-gq-hQ6" secondAttribute="trailing" constant="4" id="VAp-7K-HHi"/>
+                                                <constraint firstItem="Tfb-gq-hQ6" firstAttribute="leading" secondItem="FWf-FJ-B0X" secondAttribute="leading" constant="16" id="WUc-KG-LNx"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tfb-gq-hQ6" secondAttribute="bottom" id="gkX-C3-YY9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Comment" rowHeight="110" id="LoT-mA-f0n">
+                                        <rect key="frame" x="0.0" y="642.33333396911621" width="375" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LoT-mA-f0n" id="bU5-aS-m8Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SMF-fS-d4P">
+                                                    <rect key="frame" x="16" y="16" width="343" height="25"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iw-Qm-yL8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="25"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_head" translatesAutoresizingMaskIntoConstraints="NO" id="sBj-Xk-pas">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="25" id="Cux-Nd-uqb"/>
+                                                                        <constraint firstAttribute="height" constant="25" id="oWl-r8-sp9"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单曲「Fade」- Alan Walker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OI-0A-fJ1">
+                                                                    <rect key="frame" x="35" y="5.333333333333333" width="152" height="14.333333333333336"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="sBj-Xk-pas" secondAttribute="bottom" id="6Vh-XG-hCY"/>
+                                                                <constraint firstItem="1OI-0A-fJ1" firstAttribute="centerY" secondItem="1iw-Qm-yL8" secondAttribute="centerY" id="UhN-HH-T0X"/>
+                                                                <constraint firstItem="1OI-0A-fJ1" firstAttribute="leading" secondItem="sBj-Xk-pas" secondAttribute="trailing" constant="10" id="W3o-Kt-4Qx"/>
+                                                                <constraint firstItem="sBj-Xk-pas" firstAttribute="leading" secondItem="1iw-Qm-yL8" secondAttribute="leading" id="XVD-el-waU"/>
+                                                                <constraint firstItem="sBj-Xk-pas" firstAttribute="top" secondItem="1iw-Qm-yL8" secondAttribute="top" id="qQO-TC-koF"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SMF-fS-d4P" firstAttribute="leading" secondItem="bU5-aS-m8Q" secondAttribute="leading" constant="16" id="2QW-Ab-d87"/>
+                                                <constraint firstAttribute="trailing" secondItem="SMF-fS-d4P" secondAttribute="trailing" constant="16" id="9H3-Ha-xSx"/>
+                                                <constraint firstItem="SMF-fS-d4P" firstAttribute="top" secondItem="bU5-aS-m8Q" secondAttribute="top" constant="16" id="td6-2R-rTL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Comments" rowHeight="50" id="jU7-vv-BCS">
+                                        <rect key="frame" x="0.0" y="752.33333396911621" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jU7-vv-BCS" id="GIV-b9-GQt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XW-iU-cpZ">
+                                                    <rect key="frame" x="16" y="50" width="343" height="0.0"/>
+                                                    <attributedString key="attributedText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部 220 条评论" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9V8-WR-ci5">
+                                                    <rect key="frame" x="135.33333333333334" y="0.0" width="104.33333333333334" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WcW-xU-CV9"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9V8-WR-ci5" firstAttribute="top" secondItem="GIV-b9-GQt" secondAttribute="top" id="08E-8F-UxZ"/>
+                                                <constraint firstItem="9V8-WR-ci5" firstAttribute="centerX" secondItem="GIV-b9-GQt" secondAttribute="centerX" id="1EL-PI-n0j"/>
+                                                <constraint firstAttribute="bottom" secondItem="2XW-iU-cpZ" secondAttribute="bottom" id="8iR-qz-5BI"/>
+                                                <constraint firstAttribute="trailing" secondItem="2XW-iU-cpZ" secondAttribute="trailing" constant="16" id="GVA-qN-Ucm"/>
+                                                <constraint firstItem="2XW-iU-cpZ" firstAttribute="leading" secondItem="GIV-b9-GQt" secondAttribute="leading" constant="16" id="JdM-fc-WdS"/>
+                                                <constraint firstItem="2XW-iU-cpZ" firstAttribute="top" secondItem="9V8-WR-ci5" secondAttribute="bottom" id="o9E-64-nJG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="V3I-IC-pOJ" id="Hc7-oE-eql"/>
+                            <outlet property="delegate" destination="V3I-IC-pOJ" id="KMf-w5-QBp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="关于我" id="m3B-Ap-sAn"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="activityLabel" destination="Tfb-gq-hQ6" id="xri-vb-YDE"/>
+                        <outlet property="authIconView" destination="ptQ-hH-AcB" id="6eA-82-ygk"/>
+                        <outlet property="authLabel" destination="inM-a0-B1R" id="NBI-us-x0l"/>
+                        <outlet property="commentsLabel" destination="9V8-WR-ci5" id="Ydm-Hx-hbc"/>
+                        <outlet property="infoLabel" destination="y93-M2-fUJ" id="q6G-sl-Hjj"/>
+                        <outlet property="introLabel" destination="Crj-40-c5A" id="tLv-FQ-3Kx"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8W3-W6-OHx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="605.60000000000002" y="736.69950738916259"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cm2_icn_user_v" width="34" height="34"/>
+        <image name="user_background" width="320" height="320"/>
+        <image name="user_head" width="106.66666412353516" height="106.66666412353516"/>
+    </resources>
+</document>

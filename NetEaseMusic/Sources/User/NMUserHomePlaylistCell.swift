@@ -9,7 +9,7 @@
 import UIKit
 
 class NMUserHomePlaylistCell: UITableViewCell {
-    
+
     @IBOutlet override var textLabel: UILabel? {
         set { return cachedTextLabel = newValue }
         get { return cachedTextLabel }
